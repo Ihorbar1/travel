@@ -1,0 +1,12 @@
+.main{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 350px;
+   /* background-color: #9e3939; */
+   background-image: url(./main.jpg);
+   background-repeat: no-repeat;
+   /* background-position: center center; */
+   /* background-size: cover; */
+   background-attachment: fixed;
+}

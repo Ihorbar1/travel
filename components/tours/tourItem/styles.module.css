@@ -1,0 +1,16 @@
+.item{
+   width: 350px;
+   height: 550px;
+   margin: 50px 50px;
+   background-color: #209e46;
+}
+.text{
+   display: flex;
+   justify-content: space-between;
+   /* width: 100%; */
+   padding: 10px;
+}
+
+.text p{
+   display: inline-block;
+}

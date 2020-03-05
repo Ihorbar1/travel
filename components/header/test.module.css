@@ -1,0 +1,32 @@
+* {
+	margin: 0;
+	padding: 0; }
+ /* HEADER */
+header {
+	display: flex;
+	justify-content: space-between;
+	max-width: 1400px;
+	margin: 10px auto 0; }
+
+ /* LOGO */
+.logo {
+	width: 100px;
+	background-color: red; }
+
+ /* MENU */
+.menu ul li {
+	display: inline-block;
+	position: relative; }
+	.menu ul li > a {
+		display: block;
+		width: 120px;
+		 /* border: 1px solid #000; */
+		font-size: 18px;
+		line-height: 40px;
+		color: #000;
+		text-transform: uppercase;
+		text-decoration: none;
+		text-align: center;
+		transition: all .4s; }
+		.menu ul li > a:hover {
+			background-color: green; }
