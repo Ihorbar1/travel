@@ -1,0 +1,16 @@
+*{
+   margin: 0;
+   padding: 0;
+}
+h2{
+   display: inline-block;
+   /* max-width: 00px; */
+   margin: 40px auto 100px;
+   /* margin: 0 auto; */
+	padding-bottom: 10px;
+	border-bottom: 2px solid #000;
+	/* margin-bottom: 100px; */
+   font-size: 40px;
+   /* text-align: center; */
+	color: #000;
+}

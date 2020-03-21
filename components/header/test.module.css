@@ -5,21 +5,28 @@
 header {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	max-width: 1400px;
-	margin: 10px auto 0; }
+	margin: 10px auto 10px; }
 
  /* LOGO */
 .logo {
-	width: 100px;
-	background-color: red; }
+	width: 200px;
+	/* background-color: red;  */
 
+}
+.logo img{
+	width: 100%;
+	height: 100%;
+}
  /* MENU */
 .menu ul li {
 	display: inline-block;
 	position: relative; }
 	.menu ul li > a {
 		display: block;
-		width: 120px;
+		/* width: 120px; */
+		padding: 0px 25px;
 		 /* border: 1px solid #000; */
 		font-size: 18px;
 		line-height: 40px;
@@ -29,4 +36,4 @@ header {
 		text-align: center;
 		transition: all .4s; }
 		.menu ul li > a:hover {
-			background-color: green; }
+			background-color: #9da3ac; }

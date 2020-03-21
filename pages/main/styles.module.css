@@ -1,0 +1,24 @@
+.mainElem{
+   position: relative;
+   height: calc(100vh - 46px);
+   background-image: url(bg1.jpg);
+   background-repeat: no-repeat;
+   /* background-size: cover; */
+   /* background-position: center center; */
+}
+.mainElem span{
+   position: absolute;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   height: 98%;
+   background-color: rgba(0, 0, 0, 0.562);
+}
+
+span p{
+   color: #fff;
+   font-size: 64px;
+   text-shadow: 4px 4px 2px #000000;
+   font-weight: 800;
+}

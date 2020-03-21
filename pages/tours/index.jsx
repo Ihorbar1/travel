@@ -1,70 +1,86 @@
 import React from 'react';
 import ReactDOM from "react-dom";
+import axios from '../../lib/api'
+import Modal from 'react-modal';
 import Header from '../../components/header/index'
 import Main from '../../components/main/index'
 import TourItem from '../../components/tours/tourItem/index'
+import Footer from '../../components/footer/index'
 import s from './styles.module.css'
 
 export default class extends React.Component {
    state = {
-      tour: [
-         {
-            typeOfTravel: {
-               name: 'Тип подорожі',
-               value: 'Пляжний відпочинок'
-            },
-            country: {
-               name: 'Країна',
-               value: 'Катар'
-            },
-            resort: {
-               name: 'Курорт',
-               value: 'Доха'
-            },
-            departureFrom: {
-               name: 'Виліт із',
-               value: 'Київ'
-            },
-            departureDate: {
-               name: 'Дата вильоту/виїзду',
-               value: '17.11.19'
-            },
-            hotel: {
-               name: 'Готель',
-               value: 'Hotel test 1'
-            },
-            nights: {
-               name: 'Ночей',
-               value: '7'
-            },
-            food: {
-               name: 'Харчування',
-               value: 'Сніданки'
-            },
-            insurense: {
-               name: 'Страхування',
-               value: 'Медичне'
-            },
-            Prise: {
-               name: 'Ціна',
-               value: '$499'
-            },
-         }
-      ]
+      tours: [],
+      showModal: false
    }
 
+   getTours = () => {
+      axios.get('/tours')
+         .then((response) => {
+            this.setState({ tours: response.data })
+         })
+         .catch((error) => {
+            // handle error
+            console.log(error);
+         })
+
+   }
+
+   componentDidMount = () => {
+      this.getTours()
+   }
+
+   handleOpenModal = () => {
+      this.setState({ showModal: true });
+   }
+   handleCloseModal = () => {
+      this.setState({ showModal: false });
+   }
+
+
    render() {
+      console.log(this.state.tours);
+
       return (
          <main>
-            <Header></Header>
-            <Main></Main>
+            <Header />
+            <Main />
             <section className={s.tour}>
                <h2>Тури</h2>
                <div className={s.items}>
-                  <TourItem tour={this.state.tour}></TourItem>
-                  {/* <div className={s.item}></div> */}
+                  {this.state.tours.map(tour => <TourItem key={tour.id} tour={tour.ukrainian}></TourItem>)}
                </div>
+               <div onClick={this.handleOpenModal} className={s.nueTourBut}>+</div>
+               <Modal
+                  className={s.modal}
+                  isOpen={this.state.showModal}
+                  contentLabel="Minimal Modal Example">
+                  {Modal.setAppElement('#root')}
+                  <div onClick={this.handleCloseModal} className={s.modalButton}>X</div>
+                  <p className={s.modalInputText}>Тип подорожі</p>
+                  <input type="text" className={s.modalInput} />
+                  <p className={s.modalInputText}>Країна</p>
+                  <input type="text" className={s.modalInput} />
+                  <p className={s.modalInputText}>Курорт</p>
+                  <input type="text" className={s.modalInput} />
+                  <p className={s.modalInputText}>Виліт із</p>
+                  <input type="text" className={s.modalInput} />
+                  <p className={s.modalInputText}>Дата вильоту/виїзду</p>
+                  <input type="text" className={s.modalInput} />
+                  <p className={s.modalInputText}>Готель</p>
+                  <input type="text" className={s.modalInput} />
+                  <p className={s.modalInputText}>Ночей</p>
+                  <input type="text" className={s.modalInput} />
+                  <p className={s.modalInputText}>Харчування</p>
+                  <input type="text" className={s.modalInput} />
+                  <p className={s.modalInputText}>Страхування</p>
+                  <input type="text" className={s.modalInput} />
+                  <p className={s.modalInputText}>Ціна</p>
+                  <input type="text" className={s.modalInput} />
+                  <div className={s.modalButtonSend}><p>Відправити</p></div>
+               </Modal>
             </section>
+            <Footer />
          </main>
       )
    }

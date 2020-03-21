@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from "react-dom";
 import styled from 'styled-components'
 import s from './test.module.css'
+import img from '../../assets/img/logo-coral-travel.svg'
 
 export default class extends React.Component {
 
@@ -10,14 +11,16 @@ export default class extends React.Component {
       return (
          <>
             <header>
-               <div className={s.logo}></div>
+               <div className={s.logo}>
+                  <img src={img} alt="" />
+               </div>
                <div className={s.menu}>
                   <ul>
-                     <li><a href="">portfolio</a></li>
-                     <li><a href="">term</a></li>
-                     <li><a href="">element</a></li>
-                     <li><a href="">section</a></li>
-                     <li><a href="">terra</a></li>
+                     <li><a href="http://localhost:3000/main">Головна</a></li>
+                     <li><a href="http://localhost:3000/tours">Тури</a></li>
+                     <li><a href="">Послуги</a></li>
+                     <li><a href="">Контакти</a></li>
+                     {/* <li><a href="">terra</a></li> */}
                   </ul>
                </div>
             </header>

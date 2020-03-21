@@ -1,0 +1,21 @@
+.part{
+
+   background-color: #EFF4F8;
+   text-align: center;
+}
+
+.wrap{
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   flex-wrap: wrap;
+   max-width: 1500px;
+   margin: 0 auto;
+}
+
+.elem{
+   width: 200px;
+   height: 100px;
+   margin: 10px;
+   background-color: #b9acac;
+}

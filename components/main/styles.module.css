@@ -9,4 +9,8 @@
    /* background-position: center center; */
    /* background-size: cover; */
    background-attachment: fixed;
+   color: #fff;
+   font-size: 35px;
+   letter-spacing: 2px;
+   text-transform: uppercase;
 }
