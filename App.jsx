@@ -11,6 +11,7 @@ import { createBrowserHistory } from "history";
 import Tours from './pages/tours/index';
 import Test from './components/test'
 import Main from './pages/main'
+import Contact from './pages/contact'
 import './styles.css'
 
 const customHistory = createBrowserHistory();
@@ -51,6 +52,9 @@ export default class extends React.Component {
                </Route>
                <Route exact path="/main"
                   render={() => <Main />}>
+               </Route>
+               <Route exact path="/contact"
+                  render={() => <Contact />}>
                </Route>
             </Switch>
          </Router>

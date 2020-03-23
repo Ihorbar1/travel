@@ -19,7 +19,7 @@ export default class extends React.Component {
                      <li><a href="http://localhost:3000/main">Головна</a></li>
                      <li><a href="http://localhost:3000/tours">Тури</a></li>
                      <li><a href="">Послуги</a></li>
-                     <li><a href="">Контакти</a></li>
+                     <li><a href="http://localhost:3000/contact">Контакти</a></li>
                      {/* <li><a href="">terra</a></li> */}
                   </ul>
                </div>
