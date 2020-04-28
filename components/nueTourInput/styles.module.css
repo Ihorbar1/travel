@@ -1,0 +1,19 @@
+.modalInput {
+   width: 100%;
+   margin-left: 40px;
+   padding: 10px;
+   resize: none;
+   border: none;
+   border-bottom: 1px solid #000;
+   box-sizing: border-box;
+   text-align: right;
+   outline: none;
+}
+
+.validText {
+   position: absolute;
+   right: -200px;
+   top: 10px;
+   height: 10px;
+
+}

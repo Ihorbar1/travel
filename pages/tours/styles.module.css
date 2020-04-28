@@ -1,4 +1,4 @@
-.tour{
+.tour {
    position: relative;
    /* max-width: 1400px; */
    margin: 0 auto;
@@ -11,7 +11,7 @@
 
 } */
 
-.items{
+.items {
    display: flex;
    justify-content: space-between;
    /* align-items: ; */
@@ -20,7 +20,7 @@
    margin: 0 auto;
 }
 
-.nueTourBut{
+.nueTourBut {
    position: absolute;
    top: 120px;
    right: 40px;
@@ -34,59 +34,3 @@
    border-radius: 50%;
    cursor: pointer;
 }
-
-.modal{
-   position: relative;
-   top: 50%;
-   left: 50%;
-   transform: translate(-50%, -50%);
-   display: flex;
-   flex-direction: column;
-   justify-content: center;
-   align-items: center;
-   width: 800px;
-   height: 900px;
-   background-color: #fff;
-   border: 1px solid #000;
-   outline: none;
-   /* overflow: hidden; */
-}
-.modalInput{
-   width: 300px;
-   padding: 10px;
-   resize: none;
-}
-.modalInputText{
-   margin-top: 20px;
-
-}
-
-.modalButton{
-   box-sizing: border-box;
-   position: absolute;
-   top: 0;
-   right: 0;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   width: 30px;
-   height: 30px;
-   background-color: #fff;
-   border-left: 1px solid #000;
-   border-bottom: 1px solid #000;
-   cursor: pointer;
-}
-
-.modalButtonSend{
-   width: 150px;
-   height: 50px;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   margin-top: 20px;
-   /* text-align: center; */
-   background-color: #757dc9;
-   cursor: pointer;
-}
-
-

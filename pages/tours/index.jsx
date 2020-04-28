@@ -6,7 +6,9 @@ import Header from '../../components/header/index'
 import Main from '../../components/main/index'
 import TourItem from '../../components/tours/tourItem/index'
 import Footer from '../../components/footer/index'
+import NueTourModal from '../../components/nueTourModal/index'
 import s from './styles.module.css'
+import styled from 'styled-components';
 
 export default class extends React.Component {
    state = {
@@ -37,48 +39,45 @@ export default class extends React.Component {
       this.setState({ showModal: false });
    }
 
+   foo = () => {
+      let lang = localStorage.getItem('lang');
+      // let a = this.state.tours.map(tour => {
+      //    if (lang == 'uk') {
+      //       <TourItem key={tour.id} tour={tour.ukrainian} />
+      //    } else if (lang == 'en') {
+      //       <TourItem key={tour.id} tour={tour.english} />
+      //    }
+
+      // })
+      // return a;
+
+      if (lang == 'uk') {
+         return "tour.ukrainian"
+      } else if (lang == 'en') {
+         return "tour.english"
+      }
+   }
+
+   test = (lang) => {
+      this.setState({ lang: lang })
+
+   }
 
    render() {
       console.log(this.state.tours);
-
+      // this.foo()
+      let a = localStorage.getItem('lang');
       return (
          <main>
-            <Header />
+            <Header changeHead={this.test} />
             <Main />
             <section className={s.tour}>
                <h2>Тури</h2>
                <div className={s.items}>
-                  {this.state.tours.map(tour => <TourItem key={tour.id} tour={tour.ukrainian}></TourItem>)}
+                  {this.state.tours.map(tour => <TourItem key={tour.id} tour={(a == 'uk') ? (tour.ukrainian) : ((a == 'en') ? (tour.english) : ((a == 'ro') ? (tour.romanian) : (tour.ukrainian)))} />)}
                </div>
                <div onClick={this.handleOpenModal} className={s.nueTourBut}>+</div>
-               <Modal
-                  className={s.modal}
-                  isOpen={this.state.showModal}
-                  contentLabel="Minimal Modal Example">
-                  {Modal.setAppElement('#root')}
-                  <div onClick={this.handleCloseModal} className={s.modalButton}>X</div>
-                  <p className={s.modalInputText}>Тип подорожі</p>
-                  <input type="text" className={s.modalInput} />
-                  <p className={s.modalInputText}>Країна</p>
-                  <input type="text" className={s.modalInput} />
-                  <p className={s.modalInputText}>Курорт</p>
-                  <input type="text" className={s.modalInput} />
-                  <p className={s.modalInputText}>Виліт із</p>
-                  <input type="text" className={s.modalInput} />
-                  <p className={s.modalInputText}>Дата вильоту/виїзду</p>
-                  <input type="text" className={s.modalInput} />
-                  <p className={s.modalInputText}>Готель</p>
-                  <input type="text" className={s.modalInput} />
-                  <p className={s.modalInputText}>Ночей</p>
-                  <input type="text" className={s.modalInput} />
-                  <p className={s.modalInputText}>Харчування</p>
-                  <input type="text" className={s.modalInput} />
-                  <p className={s.modalInputText}>Страхування</p>
-                  <input type="text" className={s.modalInput} />
-                  <p className={s.modalInputText}>Ціна</p>
-                  <input type="text" className={s.modalInput} />
-                  <div className={s.modalButtonSend}><p>Відправити</p></div>
-               </Modal>
+               <NueTourModal showModal={this.state.showModal} closeModal={this.handleCloseModal} />
             </section>
             <Footer />
          </main>

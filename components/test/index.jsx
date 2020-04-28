@@ -1,12 +1,15 @@
 import React from 'react';
+import styled from 'styled-components';
+import { Test } from './styles'
 
 export default class extends React.Component {
+   state = {
+      yes: true
+   }
 
    render() {
-      console.log(this.props);
-
       return (
-         <div>fd</div>
+         <Test testlet={this.state.yes} />
       )
    }
 }

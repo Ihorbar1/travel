@@ -12,13 +12,14 @@ import Tours from './pages/tours/index';
 import Test from './components/test'
 import Main from './pages/main'
 import Contact from './pages/contact'
+import Header from './components/header/index'
 import './styles.css'
 
 const customHistory = createBrowserHistory();
 
 export default class extends React.Component {
    state = {
-      tours: []
+      tours: [],
    }
 
    getTours = () => {
@@ -39,25 +40,29 @@ export default class extends React.Component {
 
 
    render() {
-      console.log(this.state.tours);
+      if (!localStorage.getItem('lang')) {
+         localStorage.setItem('lang', "uk")
+      }
 
       return (
-         <Router history={customHistory}>
-            <Switch>
-               <Route exact path="/tours"
-                  render={() => <Tours />}>
-               </Route>
-               <Route exact path="/test"
-                  render={() => <Test props={this.state.tours} />}>
-               </Route>
-               <Route exact path="/main"
-                  render={() => <Main />}>
-               </Route>
-               <Route exact path="/contact"
-                  render={() => <Contact />}>
-               </Route>
-            </Switch>
-         </Router>
+         <>
+            <Router history={customHistory}>
+               <Switch>
+                  <Route exact path="/tours"
+                     render={() => <Tours key={localStorage.getItem('lang') + 1} />}>
+                  </Route>
+                  <Route exact path="/test"
+                     render={() => <Test props={this.state.tours} />}>
+                  </Route>
+                  <Route exact path="/main"
+                     render={() => <Main />}>
+                  </Route>
+                  <Route exact path="/contact"
+                     render={() => <Contact />}>
+                  </Route>
+               </Switch>
+            </Router>
+         </>
       )
    }
 }

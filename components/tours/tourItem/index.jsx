@@ -15,7 +15,7 @@ export default class extends React.Component {
       this.setState({ showModal: true });
    }
    handleCloseModal = () => {
-      console.log('test');
+      // console.log('test');
 
       this.setState({ showModal: false });
    }

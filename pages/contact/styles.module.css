@@ -7,8 +7,17 @@
    text-align: center;
 }
 
-.form input,
-textarea {
+.form input {
+   width: 600px;
+   margin-bottom: 100px;
+   padding: 10px;
+   font-size: 20px;
+   text-align: center;
+   border: none;
+   border-bottom: 4px solid #215A80;
+}
+
+.form textarea {
    width: 600px;
    margin-bottom: 100px;
    padding: 10px;
