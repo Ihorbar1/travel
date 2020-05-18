@@ -8,6 +8,7 @@ import img2 from './2.jpg'
 import img3 from './3.jpg'
 import img4 from './4.jpg'
 import doc from './doc.png'
+import doc1 from './Закон_України_про_захист_прав_споживачів.doc'
 
 
 
@@ -49,15 +50,16 @@ export default class extends React.Component {
                </div>
                <div className={s.itemDoc}>
                   <h3>Закон України про захист прав споживачів</h3>
-                  <img src={doc} alt="" />
+                  <a href="../Закон України про захист прав споживачів.doc" download ><img src={doc} alt="" /></a>
+
                </div>
                <div className={s.itemDoc}>
                   <h3>Закон України про туризм</h3>
-                  <img src={doc} alt="" />
+                  <a href="Закон України Про туризм.doc" download ><img src={doc} alt="" /></a>
                </div>
                <div className={s.itemDoc}>
                   <h3>Про затвердження Ліцензійних умов провадження туроператорської діяльності</h3>
-                  <img src={doc} alt="" />
+                  <a href={doc1} download ><img src={doc} alt="" /></a>
                </div>
             </div>
          </div>

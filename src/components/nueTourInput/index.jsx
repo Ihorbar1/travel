@@ -35,15 +35,15 @@ export default class extends React.Component {
       }
    }
 
-   nulValidation = () => {
-      if (this.props.checkValidation) {
-         this.setState({ isValid: this.props.isFormValid })
-      }
-   }
+   // nulValidation = () => {
+   //    if (this.props.checkValidation) {
+   //       this.setState({ isValid: this.props.isFormValid })
+   //    }
+   // }
 
 
    render() {
-      // console.log(this.props.isFormValid);
+      // console.log(this.props.isValid);
       // { this.nulValidation() }
 
       return (
@@ -53,7 +53,7 @@ export default class extends React.Component {
                name={this.props.name}
                onChange={this.props.createTour}
                onBlur={(e) => this.validation(e, this.props.patern)}
-               isValid={this.state.isValid}
+               isValid={this.props.isFormValid}
                checkValidation={this.props.checkValidation}
             />
 

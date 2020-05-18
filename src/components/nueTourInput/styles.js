@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
-export const TourInput = styled.input`
-   border-bottom: 1px solid ${({ isValid, checkValidation }) => checkValidation ? (isValid ? 'red' : 'black') : 'green'}
+const TourInput = styled.input`
+   border-bottom: 1px solid ${ props => props.checkValidation ? (props.isValid ? 'blue' : 'red') : 'green'};
 `
+
+export { TourInput };

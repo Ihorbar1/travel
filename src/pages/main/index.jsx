@@ -7,11 +7,14 @@ import Partners from '../../components/partners/index'
 import Certificates from '../../components/certificates/index'
 
 export default class extends React.Component {
+   test = (lang) => {
+      this.setState({ lang: lang })
+   }
 
    render() {
       return (
          <>
-            <Header changeHead={this.props.changeHead} />
+            <Header changeHead={this.test} />
             <div className={s.mainElem}> <span><p>Туристичні послуги</p></span> </div>
             <Partners />
             <Certificates />

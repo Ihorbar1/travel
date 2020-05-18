@@ -13,6 +13,7 @@ import Test from './components/test'
 import Main from './pages/main'
 import Contact from './pages/contact'
 import Header from './components/header/index'
+import Login from './pages/login'
 import './styles.css'
 
 const customHistory = createBrowserHistory();
@@ -48,17 +49,20 @@ export default class extends React.Component {
          <>
             <Router history={customHistory}>
                <Switch>
+                  <Route exact path="/"
+                     render={() => <Main />}>
+                  </Route>
                   <Route exact path="/tours"
                      render={() => <Tours key={localStorage.getItem('lang') + 1} />}>
                   </Route>
-                  <Route exact path="/test"
-                     render={() => <Test props={this.state.tours} />}>
-                  </Route>
-                  <Route exact path="/main"
-                     render={() => <Main />}>
-                  </Route>
                   <Route exact path="/contact"
                      render={() => <Contact />}>
+                  </Route>
+                  <Route exact path="/login"
+                     render={() => <Login />}>
+                  </Route>
+                  <Route exact path="/test"
+                     render={() => <Test props={this.state.tours} />}>
                   </Route>
                </Switch>
             </Router>

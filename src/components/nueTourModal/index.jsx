@@ -115,7 +115,7 @@ export default class extends React.Component {
    }
 
    createTours = () => {
-      axios.post('/create-tour', this.state.nueTour)
+      axios.post('/api/create-tour', this.state.nueTour)
          .then((response) => {
             console.log(response);
          })
@@ -143,7 +143,7 @@ export default class extends React.Component {
          >
 
             {Modal.setAppElement('#root')}
-            < div onClick={this.props.closeModal} className={s.modalButton} >X</div >
+            <div onClick={this.props.closeModal} className={s.modalButton} >X</div>
             <div className={s.langWrap}>
                <div className={s.langBtn} onClick={this.openUk}>UK</div>
                <div className={s.langBtn} onClick={this.openEn}>EN</div>

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from "react-dom";
+import axios from '../../../lib/api'
 import Modal from 'react-modal';
 import moment from 'moment';
 import s from './styles.module.css';
@@ -20,12 +21,25 @@ export default class extends React.Component {
       this.setState({ showModal: false });
    }
 
+
+   delTourItem = () => {
+      // axios.post('/create-tour', this.props.id)
+      //    .then((response) => {
+      //       console.log(response);
+      //    })
+      //    .catch((error) => {
+      //       console.log(error);
+      //    })
+
+   }
+
    render() {
       console.log(this.props.tour);
 
       return (
          <>
             <div className={s.item} >
+               <button className={s.del} onClick={this.delTourItem}>-</button>
                <img src={img} alt="test" />
                <div className={s.text}>
                   <p>Тип подорожі</p>

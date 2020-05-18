@@ -17,7 +17,7 @@ export default class extends React.Component {
    }
 
    getTours = () => {
-      axios.get('/tours')
+      axios.get('/api/tours')
          .then((response) => {
             this.setState({ tours: response.data })
          })
@@ -60,7 +60,6 @@ export default class extends React.Component {
 
    test = (lang) => {
       this.setState({ lang: lang })
-
    }
 
    render() {
@@ -74,7 +73,7 @@ export default class extends React.Component {
             <section className={s.tour}>
                <h2>Тури</h2>
                <div className={s.items}>
-                  {this.state.tours.map(tour => <TourItem key={tour.id} tour={(a == 'uk') ? (tour.ukrainian) : ((a == 'en') ? (tour.english) : ((a == 'ro') ? (tour.romanian) : (tour.ukrainian)))} />)}
+                  {this.state.tours.map(tour => <TourItem key={tour.id} id={tour.id} tour={(a == 'uk') ? (tour.ukrainian) : ((a == 'en') ? (tour.english) : ((a == 'ro') ? (tour.romanian) : (tour.ukrainian)))} />)}
                </div>
                <div onClick={this.handleOpenModal} className={s.nueTourBut}>+</div>
                <NueTourModal showModal={this.state.showModal} closeModal={this.handleCloseModal} />

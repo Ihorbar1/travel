@@ -1,30 +1,44 @@
-.item{
+.item {
+   position: relative;
    width: 350px;
    /* height: 550px; */
    margin: 50px 50px;
    /* background-color: #209e46; */
 }
-.item img{
+
+.del {
+   position: absolute;
+   top: 0;
+   right: 0;
+   width: 40px;
+   height: 40px;
+   font-size: 20px;
+   background-color: #921a1a;
+   border: none;
+}
+
+.item img {
    width: 100%;
    height: 250px;
    /* background-color: #911818; */
 }
-.text{
+
+.text {
    display: flex;
    justify-content: space-between;
    /* width: 100%; */
    padding: 10px;
 }
 
-.text p{
+.text p {
    display: inline-block;
 }
 
-.second{
+.second {
    background-color: #f5f5f5;
 }
 
-.text button{
+.text button {
    width: 150px;
    height: 50px;
    background-color: #57c053;
@@ -32,7 +46,7 @@
    cursor: pointer;
 }
 
-.modal{
+.modal {
    position: relative;
    top: 50%;
    left: 50%;
@@ -49,17 +63,18 @@
    /* overflow: hidden; */
 }
 
-.modalInput{
+.modalInput {
    width: 300px;
    padding: 10px;
    resize: none;
 }
-.modalInputText{
+
+.modalInputText {
    margin-top: 40px;
 
 }
 
-.modalButton{
+.modalButton {
    box-sizing: border-box;
    position: absolute;
    top: 0;
@@ -75,7 +90,7 @@
    cursor: pointer;
 }
 
-.modalButtonSend{
+.modalButtonSend {
    width: 150px;
    height: 50px;
    display: flex;
@@ -86,4 +101,3 @@
    background-color: #757dc9;
    cursor: pointer;
 }
-

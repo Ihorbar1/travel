@@ -8,10 +8,14 @@ import mapImg from './map.png'
 
 
 export default class extends React.Component {
+
+   test = (lang) => {
+      this.setState({ lang: lang })
+   }
    render() {
       return (
          <>
-            <Header />
+            <Header changeHead={this.test} />
             <Main />
             <div className={s.form}>
                <h2>Форма зворотнього звязку</h2>
