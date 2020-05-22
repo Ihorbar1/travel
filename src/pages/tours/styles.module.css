@@ -13,10 +13,12 @@
 
 .items {
    display: flex;
-   justify-content: space-between;
-   /* align-items: ; */
+   justify-content: stretch;
+   /* align-items: center; */
    flex-wrap: wrap;
    max-width: 1400px;
+   /* min-width: 800px; */
+   /* width: auto; */
    margin: 0 auto;
 }
 

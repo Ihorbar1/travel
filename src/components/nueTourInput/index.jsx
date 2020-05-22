@@ -48,7 +48,7 @@ export default class extends React.Component {
 
       return (
          <>
-            <TourInput type="text"
+            <TourInput type={this.props.type}
                className={s.modalInput}
                name={this.props.name}
                onChange={this.props.createTour}

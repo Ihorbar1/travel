@@ -1,22 +1,25 @@
-.mainElem{
+.mainElem {
    position: relative;
-   height: calc(100vh - 46px);
-   background-image: url(bg1.jpg);
+   /* height: calc(100vh - 46px); */
+   height: 100vh;
+   background-image: url(../../assets/img/bg1.jpg);
    background-repeat: no-repeat;
-   /* background-size: cover; */
-   /* background-position: center center; */
+   background-size: cover;
+   background-position: center center;
 }
-.mainElem span{
+
+.mainElem span {
    position: absolute;
+   /* top: 0; */
    display: flex;
    justify-content: center;
    align-items: center;
    width: 100%;
-   height: 98%;
+   height: 100%;
    background-color: rgba(0, 0, 0, 0.562);
 }
 
-span p{
+span p {
    color: #fff;
    font-size: 64px;
    text-shadow: 4px 4px 2px #000000;

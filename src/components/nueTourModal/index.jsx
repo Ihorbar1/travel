@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 import Modal from 'react-modal';
+import ReactNotification from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+import { store } from 'react-notifications-component';
 import axios from '../../lib/api'
 import s from './styles.module.css'
 import NueInput from '../nueTourInput/index'
@@ -12,9 +15,6 @@ import NueInput from '../nueTourInput/index'
 export default class extends React.Component {
 
    state = {
-      uk: "flex",
-      en: "none",
-      ro: "none",
       validError: "none",
       isFormValid: {
          "englishType": false,
@@ -72,23 +72,13 @@ export default class extends React.Component {
       }
    }
 
-   openUk = () => {
-      this.setState({ uk: "flex", en: "none", ro: "none" })
-   }
-   openEn = () => {
-      this.setState({ uk: "none", en: "flex", ro: "none" })
-   }
-   openRo = () => {
-      this.setState({ uk: "none", en: "none", ro: "flex" })
-   }
-
-   validErrorText = (vueErrorText) => {
-      if (vueErrorText) {
-         this.setState({ validError: "block" })
-      } else {
-         this.setState({ validError: "none" })
-      }
-   }
+   // validErrorText = (vueErrorText) => {
+   //    if (vueErrorText) {
+   //       this.createNotification('error')
+   //    } else {
+   //       this.createNotification('success')
+   //    }
+   // }
 
    createTour = (e) => {
       const nueTour = { ...this.state.nueTour, [e.target.name]: e.target.value }
@@ -101,17 +91,18 @@ export default class extends React.Component {
       Object.keys(this.state.nueTour).map(item => {
          if (!this.state.nueTour[item] == "") {
             isFormValid[item] = true;
+
          } else {
             // this.setState({ nonValid: true })
             vueErrorText = true;
             isFormValid[item] = false;
          }
-         this.setState({ isFormValid })
-         this.setState({ checkValidation: true })
       })
+      this.setState({ isFormValid })
+      this.setState({ checkValidation: true })
       vueErrorText ? e.preventDefault() : this.createTours();
 
-      this.validErrorText(vueErrorText)
+      this.createNotification(vueErrorText)
    }
 
    createTours = () => {
@@ -125,39 +116,69 @@ export default class extends React.Component {
 
    }
 
+   createNotification = (vueErrorText) => {
+      if (!vueErrorText) {
+         return store.addNotification({
+            title: "Wonderful!",
+            message: "teodosii@react-notifications-component",
+            type: "success",
+            insert: "top",
+            container: "top-right",
+            animationIn: ["animated", "fadeIn"],
+            animationOut: ["animated", "fadeOut"],
+            dismiss: {
+               duration: 5000,
+               onScreen: true
+            }
+         });
+      } else {
+         return store.addNotification({
+            // id: "test",
+            title: "Wonderful!",
+            message: "teodosii@react-notifications-component",
+            type: "danger",
+            insert: "top",
+            container: "top-right",
+            animationIn: ["animated", "fadeIn"],
+            animationOut: ["animated", "fadeOut"],
+            dismiss: {
+               duration: 5000,
+               onScreen: true
+            }
+         });
+      }
+   }
+
 
    foo = () => {
-      // console.log(this.state.nueTour);
-      // console.log(this.state.isFormValid);
-      // console.log(this.state);
 
    }
 
+
+
    render() {
       // this.foo()
+      // console.log(this.state.nueTour);
+
       return (
          <Modal
             className={s.modal}
             isOpen={this.props.showModal}
             contentLabel="Minimal Modal Example"
+            onRequestClose={this.props.closeModal}
          >
 
             {Modal.setAppElement('#root')}
-            <div onClick={this.props.closeModal} className={s.modalButton} >X</div>
-            <div className={s.langWrap}>
-               <div className={s.langBtn} onClick={this.openUk}>UK</div>
-               <div className={s.langBtn} onClick={this.openEn}>EN</div>
-               <div className={s.langBtn} onClick={this.openRo}>RO</div>
-            </div>
+            <ReactNotification />
+            <button onClick={this.props.closeModal} className={s.modalButton} >X</button>
+            <form action="" className={s.form}>
 
-            <div className={s.mainError} style={{ display: this.state.validError }}>ERROR</div>
-
-            <form action="">
-
-               <div className={s.wrap} style={{ display: this.state.uk }} >
+               <div className={s.wrap} >
+                  <h3>Тури на Українській мові</h3>
                   <div className={s.item} id="test">
                      <p className={s.modalInputText}>Тип подорожі</p>
                      <NueInput name="ukrainianType"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.ukrainianType}
@@ -167,6 +188,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Країна</p>
                      <NueInput name="ukrainianCountry"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.ukrainianCountry}
@@ -176,6 +198,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Курорт</p>
                      <NueInput name="ukrainianResort"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.ukrainianResort}
@@ -185,6 +208,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Виліт із</p>
                      <NueInput name="ukrainianDepartureFrom"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.ukrainianDepartureFrom}
@@ -194,6 +218,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Дата вильоту/виїзду</p>
                      <NueInput name="departureDate"
+                        type={"date"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.departureDate}
@@ -203,6 +228,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Готель</p>
                      <NueInput name="ukrainianHotel"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.ukrainianHotel}
@@ -212,6 +238,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Ночей</p>
                      <NueInput name="nights"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"num"}
                         isFormValid={this.state.isFormValid.nights}
@@ -221,6 +248,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Харчування</p>
                      <NueInput name="ukrainianFood"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.ukrainianFood}
@@ -230,6 +258,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Страхування</p>
                      <NueInput name="ukrainianInsurance"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.ukrainianInsurance}
@@ -239,17 +268,20 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Ціна</p>
                      <NueInput name="price"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"num"}
                         isFormValid={this.state.isFormValid.price}
                         checkValidation={this.state.checkValidation}
                      />
                   </div>
-               </div >
-               <div className={s.wrap} style={{ display: this.state.en }} >
+               </div>
+               <div className={s.wrap} >
+                  <h3>Тури на Англійській мові</h3>
                   <div className={s.item}>
                      <p className={s.modalInputText}>Type of trip</p>
                      <NueInput name="englishType"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.englishType}
@@ -259,6 +291,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Country</p>
                      <NueInput name="englishCountry"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.englishCountry}
@@ -268,6 +301,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Resort</p>
                      <NueInput name="englishResort"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.englishResort}
@@ -277,6 +311,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Departure from</p>
                      <NueInput name="englishDepartureFrom"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.englishDepartureFrom}
@@ -286,6 +321,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Hotel</p>
                      <NueInput name="englishHotel"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.englishHotel}
@@ -295,6 +331,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Food</p>
                      <NueInput name="englishFood"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.englishFood}
@@ -304,17 +341,20 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Insurance</p>
                      <NueInput name="englishInsurance"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.englishInsurance}
                         checkValidation={this.state.checkValidation}
                      />
                   </div>
-               </div >
-               <div className={s.wrap} style={{ display: this.state.ro }} >
+               </div>
+               <div className={s.wrap} >
+                  <h3>Тури на Румунській мові</h3>
                   <div className={s.item}>
                      <p className={s.modalInputText}>Тип подорожі</p>
                      <NueInput name="romanianType"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.romanianType}
@@ -324,6 +364,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Країна</p>
                      <NueInput name="romanianCountry"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.romanianCountry}
@@ -333,6 +374,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Курорт</p>
                      <NueInput name="romanianDepartureFrom"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.romanianDepartureFrom}
@@ -342,6 +384,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Виліт із</p>
                      <NueInput name="romanianResort"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.romanianResort}
@@ -351,6 +394,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Готель</p>
                      <NueInput name="romanianHotel"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.romanianHotel}
@@ -360,6 +404,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Харчування</p>
                      <NueInput name="romanianFood"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.romanianFood}
@@ -369,17 +414,18 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Страхування</p>
                      <NueInput name="romanianInsurance"
+                        type={"text"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.romanianInsurance}
                         checkValidation={this.state.checkValidation}
                      />
                   </div>
-               </div >
+               </div>
                <input type="reset" value="Відправити" className={s.modalButtonSend} onClick={(e) => this.formValidation(e)} />
             </form>
 
-         </Modal >
+         </Modal>
       )
    }
 }

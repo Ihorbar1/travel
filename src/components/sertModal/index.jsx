@@ -24,7 +24,9 @@ export default class extends React.Component {
             <img src={this.props.img} alt="" onClick={this.handleOpenModal} />
             <Modal
                className={s.modal}
-               isOpen={this.state.showModal}>
+               isOpen={this.state.showModal}
+               onRequestClose={this.handleCloseModal}
+            >
                {Modal.setAppElement('#root')}
                <div onClick={this.handleCloseModal} className={s.modalButton}>X</div>
                <img src={this.props.img} alt="" />

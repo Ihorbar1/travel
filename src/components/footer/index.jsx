@@ -8,7 +8,7 @@ export default class extends React.Component {
       return (
          <>
             <footer>
-               <p>© 2019 CoralTravel, Все права защищены</p>
+               <p>© 2020 CoralTravel, Все права защищены</p>
             </footer>
          </>
       )

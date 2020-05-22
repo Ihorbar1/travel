@@ -87,7 +87,10 @@ export default class extends React.Component {
                   <Modal
                      className={s.modal}
                      isOpen={this.state.showModal}
-                     contentLabel="Minimal Modal Example">
+                     contentLabel="Minimal Modal Example"
+                     onRequestClose={this.handleCloseModal}
+                  >
+
                      {Modal.setAppElement('#root')}
                      <div onClick={this.handleCloseModal} className={s.modalButton}>X</div>
                      <p className={s.modalInputText}>Імя</p>
