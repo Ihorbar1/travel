@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import axios from '../../../lib/api'
 import Modal from 'react-modal';
 import moment from 'moment';
@@ -23,18 +23,18 @@ export default class extends React.Component {
 
 
    delTourItem = () => {
-      // axios.post('/create-tour', this.props.id)
-      //    .then((response) => {
-      //       console.log(response);
-      //    })
-      //    .catch((error) => {
-      //       console.log(error);
-      //    })
+      axios.delete(`/api/delete-tour/${this.props.id}`)
+         .then((response) => {
+            console.log(response);
+         })
+         .catch((error) => {
+            console.log(error);
+         })
 
+      console.log(this.props.id);
    }
 
    render() {
-      console.log(this.props.tour);
 
       return (
          <>

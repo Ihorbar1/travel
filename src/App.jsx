@@ -1,18 +1,18 @@
 import React from 'react';
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import axios from './lib/api'
 import {
    Router,
    Route,
    Switch,
-   Redirect
+   // Redirect
 } from "react-router-dom";
 import { createBrowserHistory } from "history";
 import Tours from './pages/tours/index';
 import Test from './components/test'
 import Main from './pages/main'
 import Contact from './pages/contact'
-import Header from './components/header/index'
+// import Header from './components/header/index'
 import Login from './pages/login'
 import './styles.css'
 

@@ -40,7 +40,7 @@ export default class extends React.Component {
       return (
          <>
             <div className={s.wrap}>
-               <Link to="/"><img className={s.logo} src={logo} alt="" /></Link>
+               {/* <Link to="/"><img className={s.logo} src={logo} alt="" /></Link> */}
                <div className={s.login}>
                   <form action="">
                      <p>Login</p>

@@ -17,7 +17,7 @@ export default class extends React.Component {
          patern = /^[ 0-9]+$/;
          validText = "Можна вводити тільки числа"
       } else if (patern == "empty") {
-         patern = /^[a-zа-яёі]+$/i;
+         patern = /^[a-zа-яёі 0-9]+$/i;
          validText = "Можна вводити тільки текст"
       } else {
          console.log("НЕПРАВИЛЬНО");

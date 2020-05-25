@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from "react-dom";
-import s from './styles.module.css';
+// import ReactDOM from "react-dom";
+import './styles.module.css';
 
 export default class extends React.Component {
 

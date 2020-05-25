@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import Modal from 'react-modal';
 import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
@@ -42,8 +42,8 @@ export default class extends React.Component {
          "romanianFood": false,
          "romanianInsurance": false
       },
-      // nonValid: false,
-      checkValidation: false,
+      itemValidation: true,
+      // checkValidation: false,
       nueTour: {
          "englishType": "",
          "englishCountry": "",
@@ -72,12 +72,16 @@ export default class extends React.Component {
       }
    }
 
-   // validErrorText = (vueErrorText) => {
-   //    if (vueErrorText) {
+   // validErrorText = (emptyValidation) => {
+   //    if (emptyValidation) {
    //       this.createNotification('error')
    //    } else {
    //       this.createNotification('success')
    //    }
+   // }
+
+   // checkItemValidation = ()=>{
+
    // }
 
    createTour = (e) => {
@@ -87,22 +91,22 @@ export default class extends React.Component {
 
    formValidation = (e) => {
       let isFormValid = { ...this.state.isFormValid }
-      let vueErrorText = false;
+      let emptyValidation = false;
       Object.keys(this.state.nueTour).map(item => {
          if (!this.state.nueTour[item] == "") {
             isFormValid[item] = true;
 
          } else {
             // this.setState({ nonValid: true })
-            vueErrorText = true;
+            emptyValidation = true;
             isFormValid[item] = false;
          }
       })
       this.setState({ isFormValid })
       this.setState({ checkValidation: true })
-      vueErrorText ? e.preventDefault() : this.createTours();
+      emptyValidation ? e.preventDefault() : this.createTours();
 
-      this.createNotification(vueErrorText)
+      this.createNotification(emptyValidation)
    }
 
    createTours = () => {
@@ -116,8 +120,8 @@ export default class extends React.Component {
 
    }
 
-   createNotification = (vueErrorText) => {
-      if (!vueErrorText) {
+   createNotification = (emptyValidation) => {
+      if (!emptyValidation) {
          return store.addNotification({
             title: "Wonderful!",
             message: "teodosii@react-notifications-component",
@@ -159,6 +163,7 @@ export default class extends React.Component {
    render() {
       // this.foo()
       // console.log(this.state.nueTour);
+      Modal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.85)'
 
       return (
          <Modal
@@ -220,7 +225,7 @@ export default class extends React.Component {
                      <NueInput name="departureDate"
                         type={"date"}
                         createTour={this.createTour}
-                        patern={"empty"}
+                        patern={"all"}
                         isFormValid={this.state.isFormValid.departureDate}
                         checkValidation={this.state.checkValidation}
                      />

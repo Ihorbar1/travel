@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from "react-dom";
-import Modal from 'react-modal';
+// import ReactDOM from "react-dom";
+// import Modal from 'react-modal';
 import s from './styles.module.css'
 import SertModal from '../sertModal/index'
 import img1 from '../../assets/img/1.jpg'

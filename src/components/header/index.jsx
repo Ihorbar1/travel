@@ -1,7 +1,7 @@
 import React from 'react';
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
-import styled from 'styled-components'
+// import styled from 'styled-components'
 import s from './test.module.css'
 import img from '../../assets/img/logo-coral-travel.svg'
 
@@ -28,7 +28,7 @@ export default class extends React.Component {
                      <ul>
                         <li><Link to="/">Головна</Link></li>
                         <li><Link to="/tours">Тури</Link></li>
-                        <li><a href="">Послуги</a></li>
+                        {/* <li><a href="#">Послуги</a></li> */}
                         <li><Link to="/contact">Контакти</Link></li>
                         <select name="" id="" onChange={(e) => this.changeHead(e)} value={nueLang}>
                            <option value="ua" >UA</option>
