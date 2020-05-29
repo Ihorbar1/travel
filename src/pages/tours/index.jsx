@@ -1,7 +1,7 @@
 import React from 'react';
 // import ReactDOM from "react-dom";
 import axios from '../../lib/api'
-import Modal from 'react-modal';
+// import Modal from 'react-modal';
 import Header from '../../components/header/index'
 import Main from '../../components/main/index'
 import TourItem from '../../components/tours/tourItem/index'
@@ -40,8 +40,8 @@ export default class extends React.Component {
    }
 
    foo = () => {
-      let lang = localStorage.getItem('lang');
-      let elem = [];
+      // let lang = localStorage.getItem('lang');
+      // let elem = [];
       // let a = Object.keys(this.state.tours).map((item, i) => {
       //    // console.log(this.state.tours[item].isSelected);
       //    // debugger;
@@ -75,7 +75,21 @@ export default class extends React.Component {
       // }
    }
 
-   test = (lang) => {
+   deleteTourInState = (arrayNum) => {
+      let tours = [...this.state.tours]
+      tours.splice(arrayNum, 1);
+      this.setState({ tours })
+   }
+
+   changeIsSelected = (arrayNum, isSelected) => {
+      let tours = [...this.state.tours]
+      tours[arrayNum].isSelected = isSelected
+      this.setState({ tours })
+   }
+
+
+
+   changeHead = (lang) => {
       this.setState({ lang: lang })
    }
 
@@ -83,17 +97,24 @@ export default class extends React.Component {
       // console.log(this.state.tours);
       // console.log(this.foo());
       // this.foo()
-
       // this.foo()
       let lang = localStorage.getItem('lang');
       return (
          <main>
-            <Header changeHead={this.test} />
+            <Header changeHead={this.changeHead} />
             <Main />
             <section className={s.tour}>
                <h2>Тури</h2>
                <div className={s.items}>
-                  {this.state.tours.map(tour => <TourItem key={tour.id} id={tour.id} tour={(lang === 'uk') ? (tour.ukrainian) : ((lang === 'en') ? (tour.english) : ((lang === 'ro') ? (tour.romanian) : (tour.ukrainian)))} />)}
+                  {this.state.tours.map((tour, i) => <TourItem key={tour.id}
+                     id={tour.id}
+                     arrayNum={i}
+                     isSelected={tour.isSelected}
+                     changeIsSelected={this.changeIsSelected}
+                     deleteTourInState={this.deleteTourInState}
+                     mainPage={false}
+                     tour={(lang === 'uk') ? (tour.ukrainian) : ((lang === 'en') ? (tour.english) : ((lang === 'ro') ? (tour.romanian) : (tour.ukrainian)))} />)
+                  }
                </div>
                <div onClick={this.handleOpenModal} className={s.nueTourBut}>+</div>
                <NueTourModal showModal={this.state.showModal} closeModal={this.handleCloseModal} />

@@ -4,6 +4,7 @@ import axios from '../../../lib/api'
 import Modal from 'react-modal';
 import moment from 'moment';
 import s from './styles.module.css';
+import { ButtonAdd, ButtonDel, ButtonDelTour } from './styles.jsx'
 import img from '../../../assets/img/img0.jpg'
 
 export default class extends React.Component {
@@ -26,6 +27,7 @@ export default class extends React.Component {
       axios.delete(`/api/delete-tour/${this.props.id}`)
          .then((response) => {
             console.log(response);
+            this.props.deleteTourInState(this.props.arrayNum)
          })
          .catch((error) => {
             console.log(error);
@@ -34,12 +36,41 @@ export default class extends React.Component {
       console.log(this.props.id);
    }
 
+   addToHoteTour = () => {
+      axios.put(`/api/add-to-hot-tour/${this.props.id}`)
+         .then((response) => {
+            console.log(response);
+            this.props.changeIsSelected(this.props.arrayNum, true)
+         })
+         .catch((error) => {
+            console.log(error);
+         })
+
+   }
+
+   deleteFromHoteTours = () => {
+      axios.put(`/api/delete-from-hot-tour/${this.props.id}`)
+         .then((response) => {
+            console.log(response);
+            this.props.changeIsSelected(this.props.arrayNum, false)
+         })
+         .catch((error) => {
+            console.log(error);
+         })
+
+   }
+
    render() {
 
       return (
          <>
             <div className={s.item} >
-               <button className={s.del} onClick={this.delTourItem}>-</button>
+               <button className={s.del} >-</button>
+               <div className={s.optionWrap} >
+                  <ButtonDelTour onClick={this.delTourItem} mainPage={this.props.mainPage}>Видалити тур</ButtonDelTour>
+                  <ButtonAdd onClick={this.addToHoteTour} isSelected={this.props.isSelected}>Добавити в гарячі тури</ButtonAdd>
+                  <ButtonDel onClick={this.deleteFromHoteTours} isSelected={this.props.isSelected}>Видалити з гарячих турів</ButtonDel>
+               </div>
                <img src={img} alt="test" />
                <div className={s.text}>
                   <p>Тип подорожі</p>
@@ -79,7 +110,7 @@ export default class extends React.Component {
                </div>
                <div className={`${s.text} ${s.second}`}>
                   <p>Ціна</p>
-                  <p>{this.props.tour.price}</p>
+                  <p>${this.props.tour.price}</p>
                </div>
                <div className={s.text}>
                   <p></p>

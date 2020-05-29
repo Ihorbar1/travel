@@ -1,7 +1,7 @@
 import React from 'react';
 // import ReactDOM from "react-dom";
 import axios from '../../lib/api'
-import Modal from 'react-modal';
+// import Modal from 'react-modal';
 import s from './styles.module.css'
 import Header from '../../components/header/index'
 import TourItem from '../../components/tours/tourItem/index'
@@ -12,7 +12,8 @@ import Footer from '../../components/footer/index'
 export default class extends React.Component {
 
    state = {
-      tours: []
+      tours: [],
+      hotTours: []
    }
 
    test = (lang) => {
@@ -32,19 +33,34 @@ export default class extends React.Component {
             this.setState({ tours: response.data })
          })
          .catch((error) => {
-            // handle error
             console.log(error);
          })
-
    }
    componentDidMount = () => {
       this.getTours()
    }
+   changeIsSelected = (arrayNum, isSelected) => {
+      let tours = [...this.state.tours]
+      tours[arrayNum].isSelected = isSelected
+      this.setState({ tours })
+   }
 
-   foo = () => { return this.state.tours.filter(item => item.isSelected) }
+   // foo = () => {
+   //    let hotTours = [...this.state.hotTours]
+   //    hotTours = this.state.tours.filter(item => { return item.isSelected })
+   //    console.log(hotTours);
+
+   //    // this.setState({ hotTours })
+   // }
+
+   // componentWillMount = () => {
+
+   //    this.foo()
+   // }
 
    render() {
       let lang = localStorage.getItem('lang');
+
       return (
          <>
             <Header changeHead={this.test} />
@@ -52,7 +68,18 @@ export default class extends React.Component {
             <section className={s.tour}>
                <h2>Тури</h2>
                <div className={s.items}>
-                  {this.foo().map(tour => <TourItem key={tour.id} id={tour.id} tour={(lang === 'uk') ? (tour.ukrainian) : ((lang === 'en') ? (tour.english) : ((lang === 'ro') ? (tour.romanian) : (tour.ukrainian)))} />)}
+
+                  {this.state.tours.map((tour, i) => {
+                     if (tour.isSelected) {
+                        return <TourItem key={tour.id}
+                           id={tour.id}
+                           isSelected={tour.isSelected}
+                           arrayNum={i}
+                           changeIsSelected={this.changeIsSelected}
+                           mainPage={true}
+                           tour={(lang === 'uk') ? (tour.ukrainian) : ((lang === 'en') ? (tour.english) : ((lang === 'ro') ? (tour.romanian) : (tour.ukrainian)))} />
+                     }
+                  })}
                </div>
             </section>
             <Partners />

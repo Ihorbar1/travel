@@ -4,25 +4,29 @@ import s from './styles.module.css'
 import Header from '../../components/header/index'
 import Main from '../../components/main/index'
 import Footer from '../../components/footer/index'
-import mapImg from './map.png'
+import mapImg from '../../assets/img/map.png'
 
 
 export default class extends React.Component {
 
-   test = (lang) => {
+   changeHead = (lang) => {
       this.setState({ lang: lang })
    }
    render() {
       return (
          <>
-            <Header changeHead={this.test} />
+            <Header changeHead={this.changeHead} />
             <Main />
             <div className={s.form}>
                <h2>Форма зворотнього звязку</h2>
-               <input type="text" placeholder="Імя" />
-               <input type="text" placeholder="Контактний телефон" />
-               <input type="text" placeholder="Електронна пошта" />
-               <textarea name="" id="" cols="30" rows="2" placeholder="Запитання"></textarea>
+               <p>Імя</p>
+               <input type="text" />
+               <p>Контактний телефон</p>
+               <input type="tel" />
+               <p>Електронна пошта</p>
+               <input type="mail" />
+               <p>Запитання</p>
+               <textarea name="" id="" cols="30" rows="2" ></textarea>
             </div>
 
             <div className={s.contact}>

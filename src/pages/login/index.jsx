@@ -1,8 +1,7 @@
 import React from 'react';
-import ReactDOM from "react-dom";
 import axios from '../../lib/api'
-import { Link } from "react-router-dom";
-import logo from '../../assets/img/logo-coral-travel.svg'
+// import { Link } from "react-router-dom";
+// import logo from '../../assets/img/logo-coral-travel.svg'
 import s from './styles.module.css'
 
 export default class extends React.Component {
@@ -16,7 +15,7 @@ export default class extends React.Component {
    }
 
    checkState = (e) => {
-      if (!(this.state.login == '' || this.state.password == '')) {
+      if (!(this.state.login === '' || this.state.password === '')) {
          console.log('true');
 
       } else {

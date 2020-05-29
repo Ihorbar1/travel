@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from "react-dom";
+// import ReactDOM from "react-dom";
 import s from './styles.module.css'
 import { TourInput } from './styles'
 
@@ -13,26 +13,38 @@ export default class extends React.Component {
    validation = (e, patern) => {
       let validText = "";
 
-      if (patern == "num") {
+      if (patern === "num") {
          patern = /^[ 0-9]+$/;
          validText = "Можна вводити тільки числа"
-      } else if (patern == "empty") {
-         patern = /^[a-zа-яёі 0-9]+$/i;
+      } else if (patern === "empty") {
+         patern = /^[a-zа-яёі 0-9 -]+$/i;
          validText = "Можна вводити тільки текст"
       } else {
          console.log("НЕПРАВИЛЬНО");
       }
 
-      if (!e.target.value.match(patern)) {
+      if (e.target.value === "") {
+         // validText = "";
+         this.setState({ validText: "" })
+         this.props.changeValidationFlag(this.props.name, false)
+         console.log(1);
+
+      } else if (!e.target.value.match(patern)) {
          this.setState({ validText })
+         this.props.changeValidationFlag(this.props.name, false)
+         console.log(2);
+
       } else {
-         validText = "";
-         this.setState({ validText })
+         // validText = "";
+         this.setState({ validText: "" })
+         this.props.changeValidationFlag(this.props.name, true)
+         console.log(3);
+
       }
 
-      if (e.target.value == "") {
-         this.setState({ validText: "" })
-      }
+      // if (e.target.value == "") {
+      //    this.setState({ validText: "" })
+      // }
    }
 
    // nulValidation = () => {

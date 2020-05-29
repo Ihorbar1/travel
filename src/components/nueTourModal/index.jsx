@@ -15,7 +15,7 @@ import NueInput from '../nueTourInput/index'
 export default class extends React.Component {
 
    state = {
-      validError: "none",
+      // reload: "false",
       isFormValid: {
          "englishType": false,
          "englishCountry": false,
@@ -42,33 +42,33 @@ export default class extends React.Component {
          "romanianFood": false,
          "romanianInsurance": false
       },
-      itemValidation: true,
+      // itemValidation: true,
       // checkValidation: false,
       nueTour: {
-         "englishType": "",
-         "englishCountry": "",
-         "englishResort": "",
-         "englishDepartureFrom": "",
-         "departureDate": "",
-         "englishHotel": "",
-         "nights": "",
-         "englishFood": "",
-         "englishInsurance": "",
-         "price": "",
-         "ukrainianType": "",
-         "ukrainianCountry": "",
-         "ukrainianDepartureFrom": "",
-         "ukrainianResort": "",
-         "ukrainianHotel": "",
-         "ukrainianFood": "",
-         "ukrainianInsurance": "",
-         "romanianType": "",
-         "romanianCountry": "",
-         "romanianDepartureFrom": "",
-         "romanianResort": "",
-         "romanianHotel": "",
-         "romanianFood": "",
-         "romanianInsurance": ""
+         // "englishType": "",
+         // "englishCountry": "",
+         // "englishResort": "",
+         // "englishDepartureFrom": "",
+         // "departureDate": "",
+         // "englishHotel": "",
+         // "nights": "",
+         // "englishFood": "",
+         // "englishInsurance": "",
+         // "price": "",
+         // "ukrainianType": "",
+         // "ukrainianCountry": "",
+         // "ukrainianDepartureFrom": "",
+         // "ukrainianResort": "",
+         // "ukrainianHotel": "",
+         // "ukrainianFood": "",
+         // "ukrainianInsurance": "",
+         // "romanianType": "",
+         // "romanianCountry": "",
+         // "romanianDepartureFrom": "",
+         // "romanianResort": "",
+         // "romanianHotel": "",
+         // "romanianFood": "",
+         // "romanianInsurance": ""
       }
    }
 
@@ -90,21 +90,20 @@ export default class extends React.Component {
    }
 
    formValidation = (e) => {
-      let isFormValid = { ...this.state.isFormValid }
-      let emptyValidation = false;
-      Object.keys(this.state.nueTour).map(item => {
-         if (!this.state.nueTour[item] == "") {
-            isFormValid[item] = true;
+      // let isFormValid = { ...this.state.isFormValid }
+      let emptyValidation = true;
+      Object.keys(this.state.isFormValid).map(item => {
+         if (!this.state.isFormValid[item]) {
+            // isFormValid[item] = true;
+            // this.createTours()
+            emptyValidation = false;
+            // break;
 
-         } else {
-            // this.setState({ nonValid: true })
-            emptyValidation = true;
-            isFormValid[item] = false;
          }
       })
-      this.setState({ isFormValid })
+      // this.setState({ isFormValid })
       this.setState({ checkValidation: true })
-      emptyValidation ? e.preventDefault() : this.createTours();
+      emptyValidation ? this.createTours() : e.preventDefault();
 
       this.createNotification(emptyValidation)
    }
@@ -118,10 +117,16 @@ export default class extends React.Component {
             console.log(error);
          })
 
+      // this.setState({ reload: true })
+   }
+
+   changeValidationFlag = (name, flag) => {
+      const isFormValid = { ...this.state.isFormValid, [name]: flag }
+      this.setState({ isFormValid })
    }
 
    createNotification = (emptyValidation) => {
-      if (!emptyValidation) {
+      if (emptyValidation) {
          return store.addNotification({
             title: "Wonderful!",
             message: "teodosii@react-notifications-component",
@@ -155,6 +160,7 @@ export default class extends React.Component {
 
 
    foo = () => {
+      console.log(this.state.nueTour);
 
    }
 
@@ -162,7 +168,6 @@ export default class extends React.Component {
 
    render() {
       // this.foo()
-      // console.log(this.state.nueTour);
       Modal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.85)'
 
       return (
@@ -175,6 +180,7 @@ export default class extends React.Component {
 
             {Modal.setAppElement('#root')}
             <ReactNotification />
+            <button onClick={this.foo}>sdfsdf</button>
             <button onClick={this.props.closeModal} className={s.modalButton} >X</button>
             <form action="" className={s.form}>
 
@@ -188,6 +194,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.ukrainianType}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -198,6 +205,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.ukrainianCountry}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -208,6 +216,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.ukrainianResort}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -218,6 +227,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.ukrainianDepartureFrom}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -225,9 +235,10 @@ export default class extends React.Component {
                      <NueInput name="departureDate"
                         type={"date"}
                         createTour={this.createTour}
-                        patern={"all"}
+                        patern={"empty"}
                         isFormValid={this.state.isFormValid.departureDate}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -238,6 +249,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.ukrainianHotel}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -248,6 +260,7 @@ export default class extends React.Component {
                         patern={"num"}
                         isFormValid={this.state.isFormValid.nights}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -258,6 +271,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.ukrainianFood}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -268,6 +282,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.ukrainianInsurance}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -278,6 +293,7 @@ export default class extends React.Component {
                         patern={"num"}
                         isFormValid={this.state.isFormValid.price}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                </div>
@@ -291,6 +307,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.englishType}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -301,6 +318,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.englishCountry}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -311,6 +329,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.englishResort}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -321,6 +340,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.englishDepartureFrom}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -331,6 +351,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.englishHotel}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -341,6 +362,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.englishFood}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -351,6 +373,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.englishInsurance}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                </div>
@@ -364,6 +387,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.romanianType}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -374,6 +398,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.romanianCountry}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -384,6 +409,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.romanianDepartureFrom}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -394,6 +420,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.romanianResort}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -404,6 +431,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.romanianHotel}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -414,6 +442,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.romanianFood}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                   <div className={s.item}>
@@ -424,6 +453,7 @@ export default class extends React.Component {
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.romanianInsurance}
                         checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
                </div>

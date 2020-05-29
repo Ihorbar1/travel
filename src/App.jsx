@@ -8,12 +8,14 @@ import {
    // Redirect
 } from "react-router-dom";
 import { createBrowserHistory } from "history";
+import Modal from 'react-modal';
 import Tours from './pages/tours/index';
 import Test from './components/test'
 import Main from './pages/main'
 import Contact from './pages/contact'
 // import Header from './components/header/index'
 import Login from './pages/login'
+// import './reset.css'
 import './styles.css'
 
 const customHistory = createBrowserHistory();
@@ -44,6 +46,7 @@ export default class extends React.Component {
       if (!localStorage.getItem('lang')) {
          localStorage.setItem('lang', "uk")
       }
+      Modal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.85)'
 
       return (
          <>

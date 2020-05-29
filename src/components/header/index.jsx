@@ -2,7 +2,7 @@ import React from 'react';
 // import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
 // import styled from 'styled-components'
-import s from './test.module.css'
+import s from './styles.module.css'
 import img from '../../assets/img/logo-coral-travel.svg'
 
 export default class extends React.Component {
