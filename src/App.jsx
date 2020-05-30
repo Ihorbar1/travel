@@ -46,7 +46,8 @@ export default class extends React.Component {
       if (!localStorage.getItem('lang')) {
          localStorage.setItem('lang', "uk")
       }
-      Modal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.85)'
+      // Modal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.85)'
+      // Modal.defaultStyles.overlay.zIndex = '9999'
 
       return (
          <>

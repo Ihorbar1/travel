@@ -17,6 +17,7 @@ export default class extends React.Component {
    checkState = (e) => {
       if (!(this.state.login === '' || this.state.password === '')) {
          console.log('true');
+         this.sendUser()
 
       } else {
          console.log('false');
@@ -25,7 +26,7 @@ export default class extends React.Component {
    }
 
    sendUser = () => {
-      axios.post('/create-tour', this.state)
+      axios.post('/api/login', this.state)
          .then((response) => {
             console.log(response);
          })

@@ -30,3 +30,8 @@ h2 {
 :focus {
    outline: none;
 }
+
+.ReactModal__Overlay {
+   background-color: rgba(0, 0, 0, 0.85) !important;
+   z-index: 9999;
+}

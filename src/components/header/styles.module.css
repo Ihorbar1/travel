@@ -5,10 +5,11 @@
 
 /* HEADER */
 header {
-	/* position: fixed; */
+	position: fixed;
 	width: 100%;
 	background-color: #fff;
 	z-index: 1000;
+	border-bottom: 1px solid #000;
 }
 
 /* LOGO */

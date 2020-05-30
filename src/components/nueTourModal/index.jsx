@@ -168,7 +168,7 @@ export default class extends React.Component {
 
    render() {
       // this.foo()
-      Modal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.85)'
+      // Modal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.85)'
 
       return (
          <Modal

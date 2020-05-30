@@ -4,13 +4,14 @@ import axios from '../../../lib/api'
 import Modal from 'react-modal';
 import moment from 'moment';
 import s from './styles.module.css';
-import { ButtonAdd, ButtonDel, ButtonDelTour } from './styles.jsx'
+import { ButtonWrap, ButtonAdd, ButtonDel, ButtonDelTour } from './styles.jsx'
 import img from '../../../assets/img/img0.jpg'
 
 export default class extends React.Component {
 
    state = {
-      showModal: false
+      showModal: false,
+      hamburgerActive: false
    }
 
    handleOpenModal = () => {
@@ -36,7 +37,7 @@ export default class extends React.Component {
       console.log(this.props.id);
    }
 
-   addToHoteTour = () => {
+   addToHotTour = () => {
       axios.put(`/api/add-to-hot-tour/${this.props.id}`)
          .then((response) => {
             console.log(response);
@@ -48,7 +49,7 @@ export default class extends React.Component {
 
    }
 
-   deleteFromHoteTours = () => {
+   deleteFromHotTours = () => {
       axios.put(`/api/delete-from-hot-tour/${this.props.id}`)
          .then((response) => {
             console.log(response);
@@ -60,17 +61,24 @@ export default class extends React.Component {
 
    }
 
+   // togglehamburgerActive = () => {
+   //    const hamburgerActive = this.state.hamburgerActive
+   //    this.setState({ hamburgerActive: !hamburgerActive })
+   // }
+
    render() {
 
       return (
          <>
             <div className={s.item} >
-               <button className={s.del} >-</button>
-               <div className={s.optionWrap} >
+               <span className={`${s.btn} ${this.state.hamburgerActive ? s.active : null}`} onClick={() => this.setState({ hamburgerActive: !this.state.hamburgerActive })}>
+                  <span></span>
+               </span>
+               <ButtonWrap className={s.buttonWrap} hamburgerActive={this.state.hamburgerActive}>
                   <ButtonDelTour onClick={this.delTourItem} mainPage={this.props.mainPage}>Видалити тур</ButtonDelTour>
-                  <ButtonAdd onClick={this.addToHoteTour} isSelected={this.props.isSelected}>Добавити в гарячі тури</ButtonAdd>
-                  <ButtonDel onClick={this.deleteFromHoteTours} isSelected={this.props.isSelected}>Видалити з гарячих турів</ButtonDel>
-               </div>
+                  <ButtonAdd onClick={this.addToHotTour} isSelected={this.props.isSelected}>Добавити в гарячі тури</ButtonAdd>
+                  <ButtonDel onClick={this.deleteFromHotTours} isSelected={this.props.isSelected} mainPage={this.props.mainPage}>Видалити з гарячих турів</ButtonDel>
+               </ButtonWrap>
                <img src={img} alt="test" />
                <div className={s.text}>
                   <p>Тип подорожі</p>
