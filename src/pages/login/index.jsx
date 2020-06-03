@@ -47,7 +47,7 @@ export default class extends React.Component {
                      <input type="text" name='login' onBlur={(e) => this.test(e)} />
                      <p>Password</p>
                      <input type="password" name='password' onBlur={(e) => this.test(e)} />
-                     <input type="submit" onClick={(e) => this.checkState(e)} />
+                     <input type="reset" onClick={(e) => this.checkState(e)} />
                   </form>
                </div>
             </div>

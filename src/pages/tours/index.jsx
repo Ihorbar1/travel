@@ -2,6 +2,7 @@ import React from 'react';
 // import ReactDOM from "react-dom";
 import axios from '../../lib/api'
 // import Modal from 'react-modal';
+import { ua, en, ro } from 'helpers/languages';
 import Header from '../../components/header/index'
 import Main from '../../components/main/index'
 import TourItem from '../../components/tours/tourItem/index'
@@ -59,14 +60,14 @@ export default class extends React.Component {
 
       // })
 
-      let a = this.state.tours.filter(item => {
-         return item.isSelected
-      })
+      // let a = this.state.tours.filter(item => {
+      //    return item.isSelected
+      // })
 
 
 
 
-      return a;
+      // return a;
 
       // if (lang == 'uk') {
       //    return "tour.ukrainian"
@@ -99,12 +100,23 @@ export default class extends React.Component {
       // this.foo()
       // this.foo()
       let lang = localStorage.getItem('lang');
+      let langObj;
+      switch (lang) {
+         case 'en':
+            langObj = en;
+            break;
+         case 'ro':
+            langObj = ro;
+            break;
+         default:
+            langObj = ua;
+      }
       return (
          <main>
             <Header changeHead={this.changeHead} />
-            <Main />
+            <Main text={langObj.toursHeader} />
             <section className={s.tour}>
-               <h2>Тури</h2>
+               <h2>{langObj.tourCompHeader}</h2>
                <div className={s.items}>
                   {this.state.tours.map((tour, i) => <TourItem key={tour.id}
                      id={tour.id}

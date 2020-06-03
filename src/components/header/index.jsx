@@ -1,9 +1,10 @@
 import React from 'react';
 // import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
+import { ua, en, ro } from 'helpers/languages';
 // import styled from 'styled-components'
 import s from './styles.module.css'
-import img from '../../assets/img/logo-coral-travel.svg'
+import img from 'assets/img/logo-coral-travel.svg'
 
 export default class extends React.Component {
 
@@ -15,6 +16,17 @@ export default class extends React.Component {
 
    render() {
       let nueLang = localStorage.getItem('lang')
+      let langObj;
+      switch (nueLang) {
+         case 'en':
+            langObj = en;
+            break;
+         case 'ro':
+            langObj = ro;
+            break;
+         default:
+            langObj = ua;
+      }
 
       return (
          <>
@@ -26,10 +38,10 @@ export default class extends React.Component {
                   </div>
                   <div className={s.menu}>
                      <ul>
-                        <li><Link to="/">Головна</Link></li>
-                        <li><Link to="/tours">Тури</Link></li>
+                        <li><Link to="/">{langObj.menuMainPage}</Link></li>
+                        <li><Link to="/tours">{langObj.menuToursPage}</Link></li>
                         {/* <li><a href="#">Послуги</a></li> */}
-                        <li><Link to="/contact">Контакти</Link></li>
+                        <li><Link to="/contact">{langObj.menuContactPage}</Link></li>
                         <select name="" id="" onChange={(e) => this.changeHead(e)} value={nueLang}>
                            <option value="ua" >UA</option>
                            <option value="en" >EN</option>

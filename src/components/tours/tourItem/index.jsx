@@ -3,11 +3,12 @@ import React from 'react';
 import axios from '../../../lib/api'
 import Modal from 'react-modal';
 import moment from 'moment';
+import { ua, en, ro } from 'helpers/languages';
 import s from './styles.module.css';
 import { ButtonWrap, ButtonAdd, ButtonDel, ButtonDelTour } from './styles.jsx'
 import img from '../../../assets/img/img0.jpg'
 
-export default class extends React.Component {
+class TourItem extends React.Component {
 
    state = {
       showModal: false,
@@ -67,6 +68,18 @@ export default class extends React.Component {
    // }
 
    render() {
+      let lang = localStorage.getItem('lang');
+      let langObj;
+      switch (lang) {
+         case 'en':
+            langObj = en;
+            break;
+         case 'ro':
+            langObj = ro;
+            break;
+         default:
+            langObj = ua;
+      }
 
       return (
          <>
@@ -74,55 +87,55 @@ export default class extends React.Component {
                <span className={`${s.btn} ${this.state.hamburgerActive ? s.active : null}`} onClick={() => this.setState({ hamburgerActive: !this.state.hamburgerActive })}>
                   <span></span>
                </span>
-               <ButtonWrap className={s.buttonWrap} hamburgerActive={this.state.hamburgerActive}>
+               <ButtonWrap className={s.buttonWrap} hamburgerActive={this.state.hamburgerActive} mainPage={this.props.mainPage}>
                   <ButtonDelTour onClick={this.delTourItem} mainPage={this.props.mainPage}>Видалити тур</ButtonDelTour>
                   <ButtonAdd onClick={this.addToHotTour} isSelected={this.props.isSelected}>Добавити в гарячі тури</ButtonAdd>
-                  <ButtonDel onClick={this.deleteFromHotTours} isSelected={this.props.isSelected} mainPage={this.props.mainPage}>Видалити з гарячих турів</ButtonDel>
+                  <ButtonDel onClick={this.deleteFromHotTours} isSelected={this.props.isSelected} >Видалити з гарячих турів</ButtonDel>
                </ButtonWrap>
                <img src={img} alt="test" />
                <div className={s.text}>
-                  <p>Тип подорожі</p>
+                  <p>{langObj.typeOfTrip}</p>
                   <p>{this.props.tour.type}</p>
                </div>
                <div className={`${s.text} ${s.second}`}>
-                  <p>Країна</p>
+                  <p>{langObj.country}</p>
                   <p>{this.props.tour.country}</p>
                </div>
                <div className={s.text}>
-                  <p>Курорт</p>
+                  <p>{langObj.resort}</p>
                   <p>{this.props.tour.resort}</p>
                </div>
                <div className={`${s.text} ${s.second}`}>
-                  <p>Виліт із</p>
+                  <p>{langObj.departureFrom}</p>
                   <p>{this.props.tour.departureFrom}</p>
                </div>
                <div className={s.text}>
-                  <p>Дата вильоту/виїзду</p>
+                  <p>{langObj.departureDate}</p>
                   <p>{moment(this.props.tour.departureDate).format('L')}</p>
                </div>
                <div className={`${s.text} ${s.second}`}>
-                  <p>Готель</p>
+                  <p>{langObj.hotel}</p>
                   <p>{this.props.tour.hotel}</p>
                </div>
                <div className={s.text}>
-                  <p>Ночей</p>
+                  <p>{langObj.hights}</p>
                   <p>{this.props.tour.nights}</p>
                </div>
                <div className={`${s.text} ${s.second}`}>
-                  <p>Харчування</p>
+                  <p>{langObj.food}</p>
                   <p>{this.props.tour.food}</p>
                </div>
                <div className={s.text}>
-                  <p>Страхування</p>
+                  <p>{langObj.insurance}</p>
                   <p>{this.props.tour.insurance}</p>
                </div>
                <div className={`${s.text} ${s.second}`}>
-                  <p>Ціна</p>
+                  <p>{langObj.price}</p>
                   <p>${this.props.tour.price}</p>
                </div>
                <div className={s.text}>
                   <p></p>
-                  <button onClick={this.handleOpenModal}>Дізнатись більше</button>
+                  <button onClick={this.handleOpenModal}>{langObj.learnMore}</button>
                   <Modal
                      className={s.modal}
                      isOpen={this.state.showModal}
@@ -132,15 +145,15 @@ export default class extends React.Component {
 
                      {Modal.setAppElement('#root')}
                      <div onClick={this.handleCloseModal} className={s.modalButton}>X</div>
-                     <p className={s.modalInputText}>Імя</p>
+                     <p className={s.modalInputText}>{langObj.name}</p>
                      <input type="text" className={s.modalInput} />
-                     <p className={s.modalInputText}>Телефон</p>
+                     <p className={s.modalInputText}>{langObj.phone}</p>
                      <input type="tel" className={s.modalInput} />
-                     <p className={s.modalInputText}>Email</p>
+                     <p className={s.modalInputText}>{langObj.email}</p>
                      <input type="text" className={s.modalInput} />
-                     <p className={s.modalInputText}>Запитання</p>
+                     <p className={s.modalInputText}>{langObj.question}</p>
                      <textarea name="" id="" cols="30" rows="5" className={s.modalInput} ></textarea>
-                     <div className={s.modalButtonSend}><p>Відправити</p></div>
+                     <div className={s.modalButtonSend}><p>{langObj.send}</p></div>
                   </Modal>
                </div>
             </div>
@@ -148,3 +161,5 @@ export default class extends React.Component {
       )
    }
 }
+
+export default TourItem;

@@ -8,8 +8,7 @@ export default class extends React.Component {
       return (
          <>
             <section className={s.main}>
-               <h1>Тури</h1>
-
+               <h1>{this.props.text}</h1>
             </section>
          </>
       )

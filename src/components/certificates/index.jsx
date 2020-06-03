@@ -1,6 +1,7 @@
 import React from 'react';
 // import ReactDOM from "react-dom";
 // import Modal from 'react-modal';
+import { ua, en, ro } from 'helpers/languages';
 import s from './styles.module.css'
 import SertModal from '../sertModal/index'
 import img1 from '../../assets/img/1.jpg'
@@ -28,39 +29,50 @@ export default class extends React.Component {
    // }
 
    render() {
-
+      let lang = localStorage.getItem('lang');
+      let langObj;
+      switch (lang) {
+         case 'en':
+            langObj = en;
+            break;
+         case 'ro':
+            langObj = ro;
+            break;
+         default:
+            langObj = ua;
+      }
 
       return (
          <div className={s.sert}>
-            <h2>Сертифікати</h2>
+            <h2>{langObj.certificateHeader}</h2>
             <div className={s.wrap}>
                <div className={s.item} >
-                  <h3>Банківська гарантія</h3>
+                  <h3>{langObj.certificateElem1}</h3>
                   <SertModal img={img1} />
                </div>
                <div className={s.item}>
-                  <h3>Виписка (зразок)</h3>
+                  <h3>{langObj.certificateElem2}</h3>
                   <SertModal img={img2} />
                </div>
                <div className={s.item}>
-                  <h3>Книга відгуків і пропозицій (зразок)</h3>
+                  <h3>{langObj.certificateElem3}</h3>
                   <SertModal img={img3} />
                </div>
                <div className={s.item}>
-                  <h3>Ліцензія (зразок)</h3>
+                  <h3>{langObj.certificateElem4}</h3>
                   <SertModal img={img4} />
                </div>
                <div className={s.itemDoc}>
-                  <h3>Закон України про захист прав споживачів</h3>
+                  <h3>{langObj.certificateElem5}</h3>
                   <a href={doc1} download ><img src={doc} alt="" /></a>
 
                </div>
                <div className={s.itemDoc}>
-                  <h3>Закон України про туризм</h3>
+                  <h3>{langObj.certificateElem6}</h3>
                   <a href={doc2} download ><img src={doc} alt="" /></a>
                </div>
                <div className={s.itemDoc}>
-                  <h3>Про затвердження Ліцензійних умов провадження туроператорської діяльності</h3>
+                  <h3>{langObj.certificateElem7}</h3>
                   <a href={doc3} download ><img src={doc} alt="" /></a>
                </div>
             </div>

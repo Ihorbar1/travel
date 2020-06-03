@@ -1,13 +1,15 @@
 import React from 'react';
 // import ReactDOM from "react-dom";
-import axios from '../../lib/api'
+import axios from 'lib/api'
 // import Modal from 'react-modal';
 import s from './styles.module.css'
-import Header from '../../components/header/index'
-import TourItem from '../../components/tours/tourItem/index'
-import Partners from '../../components/partners/index'
-import Certificates from '../../components/certificates/index'
-import Footer from '../../components/footer/index'
+import { ua, en, ro } from 'helpers/languages';
+// import langObj from 'helpers/languages/langChanges.js'
+import Header from 'components/header'
+import TourItem from 'components/tours/tourItem'
+import Partners from 'components/partners'
+import Certificates from 'components/certificates'
+import Footer from 'components/footer'
 
 export default class extends React.Component {
 
@@ -60,13 +62,24 @@ export default class extends React.Component {
 
    render() {
       let lang = localStorage.getItem('lang');
+      let langObj;
+      switch (lang) {
+         case 'en':
+            langObj = en;
+            break;
+         case 'ro':
+            langObj = ro;
+            break;
+         default:
+            langObj = ua;
+      }
 
       return (
          <>
             <Header changeHead={this.test} />
-            <div className={s.mainElem}> <span><p>Туристичні послуги</p></span> </div>
+            <div className={s.mainElem}> <span><p>{langObj.mainHeader}</p></span> </div>
             <section className={s.tour}>
-               <h2>Тури</h2>
+               <h2>{langObj.hotToursHeader}</h2>
                <div className={s.items}>
 
                   {this.state.tours.map((tour, i) => {

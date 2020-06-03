@@ -127,19 +127,25 @@ export default class extends React.Component {
 
    createNotification = (emptyValidation) => {
       if (emptyValidation) {
-         return store.addNotification({
-            title: "Wonderful!",
-            message: "teodosii@react-notifications-component",
-            type: "success",
-            insert: "top",
-            container: "top-right",
-            animationIn: ["animated", "fadeIn"],
-            animationOut: ["animated", "fadeOut"],
-            dismiss: {
-               duration: 5000,
-               onScreen: true
+         return store.addNotification(
+            {
+               title: "Wonderful!",
+               message: "teodosii@react-notifications-component",
+               type: "success",
+               insert: "top",
+               container: "top-right",
+               animationIn: ["animated", "fadeIn"],
+               animationOut: ["animated", "fadeOut"],
+               dismiss: {
+                  duration: 5000,
+                  onScreen: true
+               }
             }
-         });
+            // {
+            // ...success,
+            // message: res.data
+            // }
+         );
       } else {
          return store.addNotification({
             // id: "test",
