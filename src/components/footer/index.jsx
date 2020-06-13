@@ -1,24 +1,14 @@
 import React from 'react';
 // import ReactDOM from "react-dom";
-import { ua, en, ro } from 'helpers/languages';
+import langCheaker from '../../helpers/languages/langChanges'
 import './styles.module.css';
 
 export default class extends React.Component {
 
 
    render() {
-      let Lang = localStorage.getItem('lang')
-      let langObj;
-      switch (Lang) {
-         case 'en':
-            langObj = en;
-            break;
-         case 'ro':
-            langObj = ro;
-            break;
-         default:
-            langObj = ua;
-      }
+      let lang = localStorage.getItem('lang')
+      let langObj = langCheaker(lang);
       return (
          <>
             <footer>

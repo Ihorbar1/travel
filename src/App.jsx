@@ -5,13 +5,14 @@ import {
    Router,
    Route,
    Switch,
-   // Redirect
+   Redirect
 } from "react-router-dom";
 import { createBrowserHistory } from "history";
-import Modal from 'react-modal';
+// import Modal from 'react-modal';
 import Tours from './pages/tours/index';
 import Test from './components/test'
 import Main from './pages/main'
+import Services from './pages/services'
 import Contact from './pages/contact'
 // import Header from './components/header/index'
 import Login from './pages/login'
@@ -23,6 +24,7 @@ const customHistory = createBrowserHistory();
 export default class extends React.Component {
    state = {
       tours: [],
+      // role: 'admin',
    }
 
    getTours = () => {
@@ -41,13 +43,18 @@ export default class extends React.Component {
       this.getTours()
    }
 
+   checkRole = (role) => { this.setState({ role: role }) }
+
 
    render() {
       if (!localStorage.getItem('lang')) {
          localStorage.setItem('lang', "uk")
       }
+      console.log(this.state.role);
+
       // Modal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.85)'
       // Modal.defaultStyles.overlay.zIndex = '9999'
+      const role = localStorage.getItem('role')
 
       return (
          <>
@@ -57,13 +64,16 @@ export default class extends React.Component {
                      render={() => <Main />}>
                   </Route>
                   <Route exact path="/tours"
-                     render={() => <Tours key={localStorage.getItem('lang') + 1} />}>
+                     render={() => <Tours role={role} />}>
+                  </Route>
+                  <Route exact path="/services"
+                     render={() => <Services />}>
                   </Route>
                   <Route exact path="/contact"
                      render={() => <Contact />}>
                   </Route>
                   <Route exact path="/login"
-                     render={() => <Login />}>
+                     render={() => <Login checkRole={this.checkRole} />}>
                   </Route>
                   <Route exact path="/test"
                      render={() => <Test props={this.state.tours} />}>

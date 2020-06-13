@@ -2,25 +2,28 @@ import React from 'react';
 // import ReactDOM from "react-dom";
 import axios from '../../lib/api'
 // import Modal from 'react-modal';
-import { ua, en, ro } from 'helpers/languages';
-import Header from '../../components/header/index'
-import Main from '../../components/main/index'
-import TourItem from '../../components/tours/tourItem/index'
-import Footer from '../../components/footer/index'
-import NueTourModal from '../../components/nueTourModal/index'
+import Header from 'components/header/'
+import Main from 'components/main'
+import TourItem from 'components/tours/tourItem'
+import Footer from 'components/footer'
+import NewTourModal from 'components/newTourModal'
+import Spiner from 'components/spiner'
+import langCheaker from '../../helpers/languages/langChanges'
 import s from './styles.module.css'
 // import styled from 'styled-components';
 
 export default class extends React.Component {
    state = {
       tours: [],
-      showModal: false
+      showModal: false,
+      load: true,
    }
 
    getTours = () => {
       axios.get('/api/tours')
          .then((response) => {
-            this.setState({ tours: response.data })
+            this.setState({ tours: response.data, load: false })
+
          })
          .catch((error) => {
             // handle error
@@ -30,6 +33,7 @@ export default class extends React.Component {
    }
 
    componentDidMount = () => {
+
       this.getTours()
    }
 
@@ -95,41 +99,46 @@ export default class extends React.Component {
    }
 
    render() {
-      // console.log(this.state.tours);
+      console.log(this.state.tours);
+
       // console.log(this.foo());
       // this.foo()
       // this.foo()
       let lang = localStorage.getItem('lang');
-      let langObj;
-      switch (lang) {
-         case 'en':
-            langObj = en;
-            break;
-         case 'ro':
-            langObj = ro;
-            break;
-         default:
-            langObj = ua;
-      }
+      const role = localStorage.getItem('role')
+      let langObj = langCheaker(lang);
+      // switch (lang) {
+      //    case 'en':
+      //       langObj = en;
+      //       break;
+      //    case 'ro':
+      //       langObj = ro;
+      //       break;
+      //    default:
+      //       langObj = ua;
+      // }
       return (
          <main>
             <Header changeHead={this.changeHead} />
             <Main text={langObj.toursHeader} />
             <section className={s.tour}>
                <h2>{langObj.tourCompHeader}</h2>
-               <div className={s.items}>
+               {this.state.load ? <Spiner /> : <div className={s.items}>
                   {this.state.tours.map((tour, i) => <TourItem key={tour.id}
                      id={tour.id}
                      arrayNum={i}
+                     image_uid={tour.imageId.image_uid}
                      isSelected={tour.isSelected}
                      changeIsSelected={this.changeIsSelected}
                      deleteTourInState={this.deleteTourInState}
                      mainPage={false}
                      tour={(lang === 'uk') ? (tour.ukrainian) : ((lang === 'en') ? (tour.english) : ((lang === 'ro') ? (tour.romanian) : (tour.ukrainian)))} />)
                   }
-               </div>
-               <div onClick={this.handleOpenModal} className={s.nueTourBut}>+</div>
-               <NueTourModal showModal={this.state.showModal} closeModal={this.handleCloseModal} />
+               </div>}
+
+               {role === 'admin' ? <div onClick={this.handleOpenModal} className={s.nueTourBut}>+</div> : ''}
+               {/* <div onClick={this.handleOpenModal} className={s.nueTourBut}>+</div> */}
+               <NewTourModal showModal={this.state.showModal} closeModal={this.handleCloseModal} />
             </section>
             <Footer />
          </main>

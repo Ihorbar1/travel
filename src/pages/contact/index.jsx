@@ -1,6 +1,7 @@
 import React from 'react';
 // import ReactDOM from "react-dom";
-import { ua, en, ro } from 'helpers/languages';
+// import { ua, en, ro } from 'helpers/languages';
+import langCheaker from '../../helpers/languages/langChanges'
 import s from './styles.module.css'
 import Header from '../../components/header/index'
 import Main from '../../components/main/index'
@@ -16,17 +17,7 @@ export default class extends React.Component {
    render() {
 
       let lang = localStorage.getItem('lang');
-      let langObj;
-      switch (lang) {
-         case 'en':
-            langObj = en;
-            break;
-         case 'ro':
-            langObj = ro;
-            break;
-         default:
-            langObj = ua;
-      }
+      let langObj = langCheaker(lang);
       return (
          <>
             <Header changeHead={this.changeHead} />
@@ -41,6 +32,7 @@ export default class extends React.Component {
                <input type="mail" />
                <p>{langObj.formQuestion}</p>
                <textarea name="" id="" cols="30" rows="2" ></textarea>
+               <div className={s.submit}>{langObj.formSend}</div>
             </div>
 
             <div className={s.contact}>

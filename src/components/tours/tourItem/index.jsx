@@ -3,7 +3,7 @@ import React from 'react';
 import axios from '../../../lib/api'
 import Modal from 'react-modal';
 import moment from 'moment';
-import { ua, en, ro } from 'helpers/languages';
+import langCheaker from 'helpers/languages/langChanges'
 import s from './styles.module.css';
 import { ButtonWrap, ButtonAdd, ButtonDel, ButtonDelTour } from './styles.jsx'
 import img from '../../../assets/img/img0.jpg'
@@ -12,7 +12,8 @@ class TourItem extends React.Component {
 
    state = {
       showModal: false,
-      hamburgerActive: false
+      hamburgerActive: false,
+      imgFile: ''
    }
 
    handleOpenModal = () => {
@@ -22,6 +23,28 @@ class TourItem extends React.Component {
       // console.log('test');
 
       this.setState({ showModal: false });
+   }
+
+   componentDidMount = () => {
+      axios(
+         {
+            method: 'get',
+            url: `/images/${this.props.image_uid}`,
+            Accept: 'image/jpg, image/jpeg, image/png'
+         }
+      )
+         .then((response) => {
+            console.log(response);
+            this.setState({
+               imgFile: `${response.config.baseURL}/${response.config.url}`,
+
+               // loadingAvatar: false
+            });
+            // console.log(response);
+         })
+         .catch((error) => {
+            console.log(error);
+         })
    }
 
 
@@ -69,30 +92,22 @@ class TourItem extends React.Component {
 
    render() {
       let lang = localStorage.getItem('lang');
-      let langObj;
-      switch (lang) {
-         case 'en':
-            langObj = en;
-            break;
-         case 'ro':
-            langObj = ro;
-            break;
-         default:
-            langObj = ua;
-      }
+      const role = localStorage.getItem('role')
+      let langObj = langCheaker(lang);
 
       return (
          <>
             <div className={s.item} >
-               <span className={`${s.btn} ${this.state.hamburgerActive ? s.active : null}`} onClick={() => this.setState({ hamburgerActive: !this.state.hamburgerActive })}>
+               {role === 'admin' ? <span className={`${s.btn} ${this.state.hamburgerActive ? s.active : null}`} onClick={() => this.setState({ hamburgerActive: !this.state.hamburgerActive })}>
                   <span></span>
-               </span>
-               <ButtonWrap className={s.buttonWrap} hamburgerActive={this.state.hamburgerActive} mainPage={this.props.mainPage}>
+               </span> : ''}
+
+               <ButtonWrap className={s.buttonWrap} hamburgerActive={this.state.hamburgerActive} >
                   <ButtonDelTour onClick={this.delTourItem} mainPage={this.props.mainPage}>Видалити тур</ButtonDelTour>
                   <ButtonAdd onClick={this.addToHotTour} isSelected={this.props.isSelected}>Добавити в гарячі тури</ButtonAdd>
-                  <ButtonDel onClick={this.deleteFromHotTours} isSelected={this.props.isSelected} >Видалити з гарячих турів</ButtonDel>
+                  <ButtonDel onClick={this.deleteFromHotTours} isSelected={this.props.isSelected} mainPage={this.props.mainPage}>Видалити з гарячих турів</ButtonDel>
                </ButtonWrap>
-               <img src={img} alt="test" />
+               <img src={this.state.imgFile} alt="test" />
                <div className={s.text}>
                   <p>{langObj.typeOfTrip}</p>
                   <p>{this.props.tour.type}</p>

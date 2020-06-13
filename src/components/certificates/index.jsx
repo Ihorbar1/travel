@@ -1,7 +1,8 @@
 import React from 'react';
 // import ReactDOM from "react-dom";
 // import Modal from 'react-modal';
-import { ua, en, ro } from 'helpers/languages';
+// import { ua, en, ro } from 'helpers/languages';
+import langCheaker from '../../helpers/languages/langChanges'
 import s from './styles.module.css'
 import SertModal from '../sertModal/index'
 import img1 from '../../assets/img/1.jpg'
@@ -30,17 +31,7 @@ export default class extends React.Component {
 
    render() {
       let lang = localStorage.getItem('lang');
-      let langObj;
-      switch (lang) {
-         case 'en':
-            langObj = en;
-            break;
-         case 'ro':
-            langObj = ro;
-            break;
-         default:
-            langObj = ua;
-      }
+      let langObj = langCheaker(lang);
 
       return (
          <div className={s.sert}>

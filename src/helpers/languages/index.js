@@ -2,6 +2,7 @@ const ua = {
    //HEADER AND FOOTER
    menuMainPage: 'Головна',
    menuToursPage: 'Тури',
+   menuServicesPage: 'Послуги',
    menuContactPage: 'Контакти',
    footer: '© 2020 CoralTravel, Всі права захищені',
 
@@ -41,6 +42,19 @@ const ua = {
    question: 'Запитання',
    send: 'Відправити',
 
+   //SERVICES PAGE
+   servicesHeader: 'Наші послуги',
+   elem1Header: 'Авіаквитки',
+   elem1Text1: 'У нас Ви можете забронювати і придбати авіаквитки у всі країни світу: на регулярні рейси, чертерні та бюджетні авіалінії. Ми підберемо для Вас найбільш вигідні та зручні авіаквитки',
+   elem2Header: 'Юридична підтримка',
+   elem2Text1: 'У наших партнерів - Адвокатське бюро "Островський та партнери", Ви можете отримати юридичну підтримку з будь-яких питань у разі виникнення нестандартних ситуацій у сфері туризму, в кримінальних, цивільних (в тому числі сімейних та спадкових), господарських та адміністративних справах.',
+   elem2Text2: 'Клієнт можете бути впевненим, що вирішенням його питання буде займатись кваліфікований адвокат, що має позитивний досвід у тій галузі юриспруденції яку необхідно застосувати при виконанні поставленого завдання. Окрім цього значну частину роботи адвокати виконують за допомогою командного підходу, що значно підвищує результативність та якість юридичних послуг.',
+   elem3Header: 'Медичне страхування',
+   elem3Text1: 'Збираєтесь у відпустку, відрядження чи на навчання в іншу країну? Саме час придбати страховий поліс «Подорожуючих за кордон». З полісом Ви можете бути впевнені, що несподівана хвороба чи травма не зіпсують Ваше перебування за кордоном. Страховий поліс гарантує отримання необхідної допомоги 24 години на добу в будь-якому куточку світу.',
+   elem3Text2: 'Як користуватися полісом:',
+   elem3Text3: "Обов'язково після настання стархового випадку, потрібно його зафіксувати протягом 24 годин Для цього наберіть номер гарячої лінії, що вказана у полісі та назвіть номер Вашого страхвого полісу.",
+
+
    //CONTACT PAGE
    contactHeader: 'Наші контакти',
    // FORM
@@ -62,6 +76,7 @@ const en = {
    //HEADER AND FOOTER
    menuMainPage: 'Main',
    menuToursPage: 'Tours',
+   menuServicesPage: 'Services',
    menuContactPage: 'Contacts',
    footer: '© 2020 CoralTravel, All rights reserved',
 
@@ -101,6 +116,18 @@ const en = {
    question: 'Question',
    send: 'Send',
 
+   //SERVICES PAGE
+   servicesHeader: 'Our services',
+   elem1Header: 'Flights',
+   elem1Text1: 'Here you can book and buy tickets to all countries of the world: for regular flights, charter and budget airlines. We will select the most profitable and convenient tickets for you',
+   elem2Header: 'Legal support',
+   elem2Text1: 'At our partners - Law Office "Ostrovsky and Partners", you can get legal support on any issues in case of unusual situations in the field of tourism, criminal, civil (including family and inheritance), economic and administrative cases.',
+   elem2Text2: 'The client can be sure that the solution of his question will be dealt with by a qualified lawyer who has positive experience in the field of jurisprudence that must be applied in the performance of the task. In addition, a significant part of the work is performed by lawyers through a team approach, which significantly increases the effectiveness and quality of legal services.',
+   elem3Header: 'Medical Insurance',
+   elem3Text1: "Are you going on vacation, business trip or study in another country? It's time to buy a travel policy 'Travelers Abroad'. With a policy, you can be sure that an unexpected illness or injury will not spoil your stay abroad. The insurance policy guarantees the necessary assistance 24 hours a day, anywhere in the world.",
+   elem3Text2: 'How to use the policy:',
+   elem3Text3: "Be sure to record it within 24 hours after the occurrence of the insurance case. To do this, dial the number of the hotline specified in the policy and call the number of your insurance policy.",
+
    //CONTACT PAGE
    contactHeader: 'Our contacts',
    // FORM
@@ -123,6 +150,7 @@ const ro = {
    //HEADER AND FOOTER
    menuMainPage: 'Acasă',
    menuToursPage: 'Tururi',
+   menuServicesPage: 'Servicii',
    menuContactPage: 'Contacte',
    footer: '© 2020 CoralTravel, Toate drepturile rezervate',
 
@@ -161,6 +189,18 @@ const ro = {
    email: 'E-mail',
    question: 'Întrebare',
    send: 'Trimite',
+
+   //SERVICES PAGE
+   servicesHeader: 'Serviciile noastre',
+   elem1Header: 'Zboruri',
+   elem1Text1: 'Aici puteți rezerva și cumpăra bilete către toate țările lumii: pentru zboruri regulate, linii aeriene charter și buget. Vom selecta cele mai profitabile și convenabile bilete pentru dvs.',
+   elem2Header: 'Suport legal',
+   elem2Text1: 'La partenerii noștri - Biroul de avocați „Ostrovsky și partenerii”, puteți obține asistență juridică pentru orice problemă în caz de situații neobișnuite în domeniul turismului, penale, civile (inclusiv familii și moștenire), cazuri economice și administrative.',
+   elem2Text2: 'Clientul poate fi sigur că soluția întrebării sale va fi tratată de un avocat calificat, care are experiență pozitivă în domeniul jurisprudenței care trebuie aplicat în îndeplinirea sarcinii. În plus, o parte semnificativă a activității este realizată de avocați printr-o abordare a echipei, ceea ce crește semnificativ eficacitatea și calitatea serviciilor juridice.',
+   elem3Header: 'Asigurare medicala',
+   elem3Text1: 'Mergi în vacanță, călătorie de afaceri sau studiezi într-o altă țară? Este timpul să cumpărați o politică de călătorie „Călătorii în străinătate”. Cu o poliță, puteți fi sigur că o boală sau o vătămare neașteptată nu vă vor strica șederea în străinătate. Polita de asigurare garantează asistența necesară 24 de ore pe zi, oriunde în lume.',
+   elem3Text2: 'Cum se folosește politica:',
+   elem3Text3: "Este obligatoriu să o înregistrați în 24 de ore de la apariția cazului de asigurare. Pentru a face acest lucru, formați numărul liniei de telefon specificat în poliță și denumiți numărul poliței de asigurare.",
 
    //CONTACT PAGE
    contactHeader: 'Contactele noastre',

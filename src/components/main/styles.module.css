@@ -15,3 +15,7 @@
    letter-spacing: 2px;
    text-transform: uppercase;
 }
+
+.main h1 {
+   text-shadow: 4px 4px 2px #000000;
+}
