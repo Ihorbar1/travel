@@ -1,14 +1,15 @@
 import React from 'react';
-// import ReactDOM from "react-dom";
 import axios from 'lib/api'
-// import Modal from 'react-modal';
 import s from './styles.module.css'
-// import { ua, en, ro } from 'helpers/languages';
 import langCheaker from '../../helpers/languages/langChanges'
-// import langObj from 'helpers/languages/langChanges.js'
 import Header from 'components/header'
 import TourItem from 'components/tours/tourItem'
+import ReactNotification from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
+import { store } from 'react-notifications-component';
+import { success, error } from '../../helpers/notification'
 import Spiner from 'components/spiner'
+import About from '../../components/about'
 import Partners from 'components/partners'
 import Certificates from 'components/certificates'
 import Footer from 'components/footer'
@@ -21,16 +22,11 @@ export default class extends React.Component {
       load: true
    }
 
-   changeHead = (lang) => {
-      this.setState({ lang: lang })
-   }
+   changeHead = (lang) => this.setState({ lang: lang })
 
-   handleOpenModal = () => {
-      this.setState({ showModal: true });
-   }
-   handleCloseModal = () => {
-      this.setState({ showModal: false });
-   }
+   handleOpenModal = () => this.setState({ showModal: true });
+
+   handleCloseModal = () => this.setState({ showModal: false });
 
    getTours = () => {
       axios.get('/api/hot-tours')
@@ -50,30 +46,34 @@ export default class extends React.Component {
       this.setState({ tours })
    }
 
-   // foo = () => {
-   //    let hotTours = [...this.state.hotTours]
-   //    hotTours = this.state.tours.filter(item => { return item.isSelected })
-   //    console.log(hotTours);
-
-   //    // this.setState({ hotTours })
-   // }
-
-   // componentWillMount = () => {
-
-   //    this.foo()
-   // }
+   createNotification = (typeOfNotification, message) => {
+      if (typeOfNotification) {
+         store.addNotification(
+            {
+               ...success,
+               title: "Операція успішна",
+               message: message,
+            })
+      } else {
+         store.addNotification(
+            {
+               ...error,
+               title: "Проблема!",
+               message: message,
+            })
+      }
+   }
 
    render() {
       let lang = localStorage.getItem('lang');
       let langObj = langCheaker(lang);
-      console.log(this.state.tours);
-
 
       return (
          <>
             <Header changeHead={this.changeHead} />
+            <ReactNotification />
             <div className={s.mainElem}> <span><p>{langObj.mainHeader}</p></span> </div>
-            {this.state.tours[0] != undefined ? (
+            {this.state.tours[0] !== undefined ? (
                <section className={s.tour}>
                   <h2>{langObj.hotToursHeader}</h2>
                   <div className={s.items}>
@@ -86,13 +86,14 @@ export default class extends React.Component {
                               image_uid={tour.imageId.image_uid}
                               arrayNum={i}
                               changeIsSelected={this.changeIsSelected}
+                              createNotification={this.createNotification}
                               mainPage={true}
                               tour={(lang === 'uk') ? (tour.ukrainian) : ((lang === 'en') ? (tour.english) : ((lang === 'ro') ? (tour.romanian) : (tour.ukrainian)))} />
                         }
                      })}
                   </div>
                </section>) : ''}
-
+            <About />
             <Partners />
             <Certificates />
             <Footer />

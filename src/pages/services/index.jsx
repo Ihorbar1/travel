@@ -1,5 +1,4 @@
 import React from 'react';
-// import { ua, en, ro } from 'helpers/languages';
 import langCheaker from '../../helpers/languages/langChanges'
 import Header from '../../components/header'
 import Main from '../../components/main'

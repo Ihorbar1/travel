@@ -1,6 +1,5 @@
 import { ua, en, ro } from 'helpers/languages';
 
-// let lang = localStorage.getItem('lang');
 const langCheaker = (lang) => {
 
    let langObj;

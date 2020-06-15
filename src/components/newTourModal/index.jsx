@@ -1,13 +1,13 @@
 import React from 'react';
-// import ReactDOM from "react-dom";
 import Modal from 'react-modal';
+import Spiner from '../../components/spiner'
 import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
 import { store } from 'react-notifications-component';
 import axios from '../../lib/api'
 import s from './styles.module.css'
 import NewInput from '../newTourInput/index'
-// import styled from 'styled-components';
+import { error } from '../../helpers/notification'
 
 
 
@@ -15,7 +15,7 @@ import NewInput from '../newTourInput/index'
 export default class extends React.Component {
 
    state = {
-      // reload: "false",
+      load: false,
       isFormValid: {
          "englishType": false,
          "englishCountry": false,
@@ -44,48 +44,34 @@ export default class extends React.Component {
       },
       imgFileName: 'Загрузити картинку',
       imageURI: null,
-      // itemValidation: true,
-      // checkValidation: false,
       file: '',
       nueTour: {
-         "englishType": "Excursion tour",
-         "englishCountry": "Italy",
-         "englishResort": "Venice-Rome-Florence",
-         "englishDepartureFrom": "Lviv (bus)",
-         "departureDate": "2020-07-28",
-         "englishHotel": "Europa Pension",
-         "nights": "23",
-         "englishFood": "breakfasts",
-         "englishInsurance": "medical",
-         "price": "566",
-         "ukrainianType": "Екскурсійний тур",
-         "ukrainianCountry": "Італія",
-         "ukrainianDepartureFrom": "Венеція-Рим-Флоренція",
-         "ukrainianResort": "Львів (автобус)",
-         "ukrainianHotel": "Europa Pension",
-         "ukrainianFood": "сніданки",
-         "ukrainianInsurance": "медичне",
-         "romanianType": "Tur de excursie",
-         "romanianCountry": "Italia",
-         "romanianDepartureFrom": "Venezia-Roma-Florența",
-         "romanianResort": "Lviv (autobuz)",
-         "romanianHotel": "Europa Pension",
-         "romanianFood": "Micul dejun",
-         "romanianInsurance": "medical"
+         // "englishType": "Excursion tour",
+         // "englishCountry": "Italy",
+         // "englishResort": "Venice-Rome-Florence",
+         // "englishDepartureFrom": "Lviv (bus)",
+         // "departureDate": "2020-07-28",
+         // "englishHotel": "Europa Pension",
+         // "nights": "23",
+         // "englishFood": "breakfasts",
+         // "englishInsurance": "medical",
+         // "price": "566",
+         // "ukrainianType": "Екскурсійний тур",
+         // "ukrainianCountry": "Італія",
+         // "ukrainianDepartureFrom": "Венеція-Рим-Флоренція",
+         // "ukrainianResort": "Львів (автобус)",
+         // "ukrainianHotel": "Europa Pension",
+         // "ukrainianFood": "сніданки",
+         // "ukrainianInsurance": "медичне",
+         // "romanianType": "Tur de excursie",
+         // "romanianCountry": "Italia",
+         // "romanianDepartureFrom": "Venezia-Roma-Florența",
+         // "romanianResort": "Lviv (autobuz)",
+         // "romanianHotel": "Europa Pension",
+         // "romanianFood": "Micul dejun",
+         // "romanianInsurance": "medical"
       }
    }
-
-   // validErrorText = (emptyValidation) => {
-   //    if (emptyValidation) {
-   //       this.createNotification('error')
-   //    } else {
-   //       this.createNotification('success')
-   //    }
-   // }
-
-   // checkItemValidation = ()=>{
-
-   // }
 
    createTour = (e) => {
       const nueTour = { ...this.state.nueTour, [e.target.name]: e.target.value }
@@ -93,61 +79,42 @@ export default class extends React.Component {
    }
 
    formValidation = (e) => {
-      // let isFormValid = { ...this.state.isFormValid }
       let emptyValidation = true;
-      Object.keys(this.state.isFormValid).map(item => {
-         if (!this.state.isFormValid[item]) {
-            // isFormValid[item] = true;
-            // this.createTours()
-            emptyValidation = false;
-            // break;
-
-         }
-      })
-      // this.setState({ isFormValid })
+      Object.keys(this.state.isFormValid).map(item => !this.state.isFormValid[item] ? emptyValidation = false : emptyValidation = true)
+      this.state.file !== '' ? emptyValidation = true : emptyValidation = false
       this.setState({ checkValidation: true })
       e.preventDefault()
-      // emptyValidation ? this.createTours(e) : e.preventDefault();
-      this.createTours(e)
+      emptyValidation ? this.createTours(e) : e.preventDefault();
+      // this.createTours(e)
       this.createNotification(emptyValidation)
    }
 
    createTours = (e) => {
-      // console.log(e.target);
+
       var target = e.target
-
-      // console.log(e.target.imgUpload);
-
-
-      // console.log(data);
-
+      this.setState({ load: true })
 
       axios.post('/api/create-tour', this.state.nueTour)
          .then((response) => {
-            // console.log(`!!!!DF ${this.state.file} !!!!GHF ${response.data}`);
-            console.log(this.state.file);
             console.log(response.data);
-
-
             let data = new FormData();
-            // data = { tourId: response.data, file: this.state.file }
-            // data = { file: this.state.file, tourId: response.data }
             data.append('tourId', response.data);
             data.append('file', target.imgUpload.files[0]);
 
             axios.post(`/api/upload`, data)
                .then((response) => {
+                  this.setState({ load: false })
+                  window.location.reload(true)
                   console.log(response);
                }).catch((error) => {
                   console.log(error);
+                  this.setState({ load: false })
                })
-
          })
          .catch((error) => {
             console.log(error);
+            this.setState({ load: false })
          })
-
-      // this.setState({ reload: true })
    }
 
    changeValidationFlag = (name, flag) => {
@@ -155,44 +122,17 @@ export default class extends React.Component {
       this.setState({ isFormValid })
    }
 
-   createNotification = (emptyValidation) => {
-      if (emptyValidation) {
-         return store.addNotification(
+   createNotification = (typeOfNotification) => {
+      if (!typeOfNotification) {
+         store.addNotification(
             {
-               title: "Wonderful!",
-               message: "teodosii@react-notifications-component",
-               type: "success",
-               insert: "top",
-               container: "top-right",
-               animationIn: ["animated", "fadeIn"],
-               animationOut: ["animated", "fadeOut"],
-               dismiss: {
-                  duration: 5000,
-                  onScreen: true
-               }
-            }
-            // {
-            // ...success,
-            // message: res.data
-            // }
-         );
-      } else {
-         return store.addNotification({
-            // id: "test",
-            title: "Wonderful!",
-            message: "teodosii@react-notifications-component",
-            type: "danger",
-            insert: "top",
-            container: "top-right",
-            animationIn: ["animated", "fadeIn"],
-            animationOut: ["animated", "fadeOut"],
-            dismiss: {
-               duration: 5000,
-               onScreen: true
-            }
-         });
+               ...error,
+               title: "Проблема!",
+               message: "Помилка при створенні туру",
+            })
       }
    }
+
 
 
    buildImgTag() {
@@ -211,32 +151,13 @@ export default class extends React.Component {
    }
 
    fileSelectedHandler = event => {
-      // if (event.target.files[0] !== undefined) {
-      // const data = new FormData()
-      // data.append('file', event.target.files[0])
-      // console.log(data);
-      // const nueTour = { ...this.state.nueTour, file: event.target.files[0] }
       this.readURI(event)
-      this.setState({ file: [event.target.files[0]] })
-      // this.setState({ nueTour })
-      this.setState({ imgFileName: 'Загрузити іншу картинку' })
-      // reader.readAsDataURL(event.target.files[0])
+      this.setState({ file: [event.target.files[0]], imgFileName: 'Загрузити іншу картинку' })
    }
-   // }
-
-   foo = () => {
-      console.log(this.state.nueTour);
-
-   }
-
 
 
    render() {
-      // this.foo()
-      // Modal.defaultStyles.overlay.backgroundColor = 'rgba(0, 0, 0, 0.85)'
-      console.log(this.state.nueTour);
       const imgTag = this.buildImgTag();
-
 
       return (
          <Modal
@@ -248,7 +169,10 @@ export default class extends React.Component {
 
             {Modal.setAppElement('#root')}
             <ReactNotification />
-            {/* <button onClick={this.foo}>sdfsdf</button> */}
+            {this.state.load ? <div className={s.spin_wrap}>
+               <Spiner />
+            </div> : ""}
+
             <button onClick={this.props.closeModal} className={s.modalButton} >X</button>
             <form encType="multipart/form-data" className={s.form} onSubmit={(e) => this.formValidation(e)}>
 

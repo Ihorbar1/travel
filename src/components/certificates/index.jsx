@@ -1,7 +1,4 @@
 import React from 'react';
-// import ReactDOM from "react-dom";
-// import Modal from 'react-modal';
-// import { ua, en, ro } from 'helpers/languages';
 import langCheaker from '../../helpers/languages/langChanges'
 import s from './styles.module.css'
 import SertModal from '../sertModal/index'
@@ -17,17 +14,6 @@ import doc3 from '../../assets/files/Про_затвердження_Ліцен�
 
 
 export default class extends React.Component {
-
-   // createItem = () => {
-   //    return imgArr.map(item => {
-   //       return (
-   //          <>
-   //             <img src={item} alt="" onClick={this.handleOpenModal} />
-   //             <SertModal showModal={this.state.showModal} img={item} handleCloseModal={this.handleCloseModal} />
-   //          </>
-   //       )
-   //    })
-   // }
 
    render() {
       let lang = localStorage.getItem('lang');

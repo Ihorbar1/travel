@@ -9,6 +9,11 @@ const ua = {
    //MAIN PAGE
    mainHeader: 'Туристичні послуги',
    hotToursHeader: 'Гарячі тури',
+   // COMP ABOUT
+   aboutHeader: 'Про нас',
+   aboutText1: 'Мрієте про незабутню подорож? Ви потрапили за адресою! «Coral Traver» - компанія, яка знає все про організацію відпочинку.',
+   aboutText2: 'Гарячі тури в будь-яку точку світу, весільні подорожі, круїзи, автобусні екскурсії - це і багато іншого можна замовити саме у нас.',
+   aboutText3: 'Мінімум зусиль з Вашого боку - максимум яскравих вражень!',
    // COMP PARTNERS
    partnersHeader: 'Наші партнери',
    // COMP CERTIFICATES
@@ -61,7 +66,7 @@ const ua = {
    contactFormHeader: 'Звяжітся з нами',
    formName: 'Імя',
    formPhone: 'Телефон',
-   formEmail: 'Емейл',
+   formEmail: 'E-mail',
    formQuestion: 'Запитання',
    formSend: 'Відправити',
    //MAP
@@ -83,6 +88,11 @@ const en = {
    //MAIN PAGE
    mainHeader: 'Tourist services',
    hotToursHeader: 'Hot tours',
+   // COMP ABOUT
+   aboutHeader: 'About us',
+   aboutText1: 'Do you dream of an unforgettable trip? Youve come to the right place! Coral Traver is a company that knows everything about leisure.',
+   aboutText2: 'Hot tours to anywhere in the world, honeymoons, cruises, bus tours - this and much more can be ordered from us.',
+   aboutText3: 'A minimum of effort on your part - a maximum of vivid impressions!',
    // COMP PARTNERS
    partnersHeader: 'Our partners',
    // COMP CERTIFICATES
@@ -157,6 +167,11 @@ const ro = {
    //MAIN PAGE
    mainHeader: 'Servicii turistice',
    hotToursHeader: 'Tururi calde',
+   // COMP ABOUT
+   aboutHeader: 'Despre noi',
+   aboutText1: 'Visezi o călătorie de neuitat? Ai ajuns la locul potrivit! Coral Traver este o companie care știe totul despre timpul liber.',
+   aboutText2: 'Tururi calde către oriunde în lume, luna de miere, croaziere, tururi cu autobuzul - acest lucru și multe altele pot fi comandate de la noi.',
+   aboutText3: 'Un efort minim din partea ta - un maxim de impresii vii!',
    // COMP PARTNERS
    partnersHeader: 'Partenerii noștri',
    // COMP CERTIFICATES

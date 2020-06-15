@@ -1,24 +1,15 @@
 .tour {
    position: relative;
-   /* max-width: 1400px; */
+   min-height: 600px;
    margin: 0 auto;
    text-align: center;
 }
 
-
-
-/* .main_h2{
-
-} */
-
 .items {
    display: flex;
    justify-content: stretch;
-   /* align-items: center; */
    flex-wrap: wrap;
    max-width: 1400px;
-   /* min-width: 800px; */
-   /* width: auto; */
    margin: 0 auto;
 }
 

@@ -1,5 +1,4 @@
 import React from 'react';
-// import ReactDOM from "react-dom";
 import langCheaker from '../../helpers/languages/langChanges'
 import s from './styles.module.css'
 import partner1 from '../../assets/img/similio-seeklogo.com.svg'

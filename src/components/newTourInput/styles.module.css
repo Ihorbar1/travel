@@ -1,14 +1,11 @@
 .modalInput {
    box-sizing: border-box;
    width: 100%;
-   /* margin-left: 40px; */
    padding: 10px;
    resize: none;
    background-color: #dadada;
    border: none;
-   /* border: 1px solid #000; */
    border-radius: 10px;
-   /* text-align: right; */
    font-size: 18px;
    outline: none;
 }
@@ -24,10 +21,3 @@
    height: 10px;
 
 }
-
-/* ::-webkit-calendar-picker-indicator {
-   color: transparent;
-   opacity: 1;
-   background: url(//www.gravatar.com/avatar/cbfaff96665b7567defe1b34a883db8b?s=16&d=identicon&r=PG) no-repeat center;
-   background-size: contain;
-} */

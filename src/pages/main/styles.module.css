@@ -1,6 +1,5 @@
 .mainElem {
    position: relative;
-   /* height: calc(100vh - 46px); */
    height: 100vh;
    background-image: url(../../assets/img/bg1.jpg);
    background-repeat: no-repeat;
@@ -10,7 +9,6 @@
 
 .mainElem span {
    position: absolute;
-   /* top: 0; */
    display: flex;
    justify-content: center;
    align-items: center;
@@ -28,25 +26,16 @@ span p {
 
 .tour {
    position: relative;
-   /* max-width: 1400px; */
    margin: 0 auto;
+   background-color: #EFF4F8;
    text-align: center;
 }
-
-
-
-/* .main_h2{
-
-} */
 
 .items {
    display: flex;
    justify-content: stretch;
-   /* align-items: center; */
    flex-wrap: wrap;
    max-width: 1400px;
-   /* min-width: 800px; */
-   /* width: auto; */
    margin: 0 auto;
 }
 

@@ -3,12 +3,8 @@
    justify-content: center;
    align-items: center;
    height: 550px;
-   /* margin-top: -40px; */
-   /* background-color: #9e3939; */
    background-image: url(../../assets/img/main.jpg);
    background-repeat: no-repeat;
-   /* background-position: center center; */
-   /* background-size: cover; */
    background-attachment: fixed;
    color: #fff;
    font-size: 35px;

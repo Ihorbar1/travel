@@ -1,5 +1,4 @@
 import React from 'react';
-// import ReactDOM from "react-dom";
 import langCheaker from '../../helpers/languages/langChanges'
 import './styles.module.css';
 

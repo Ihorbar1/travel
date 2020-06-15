@@ -1,6 +1,4 @@
 import React from 'react';
-// import ReactDOM from "react-dom";
-// import { ua, en, ro } from 'helpers/languages';
 import langCheaker from '../../helpers/languages/langChanges'
 import s from './styles.module.css'
 import Header from '../../components/header/index'
@@ -11,9 +9,8 @@ import mapImg from '../../assets/img/map.png'
 
 export default class extends React.Component {
 
-   changeHead = (lang) => {
-      this.setState({ lang: lang })
-   }
+   changeHead = (lang) => this.setState({ lang: lang })
+
    render() {
 
       let lang = localStorage.getItem('lang');

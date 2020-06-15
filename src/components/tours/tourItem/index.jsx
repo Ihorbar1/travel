@@ -1,51 +1,21 @@
 import React from 'react';
-// import ReactDOM from "react-dom";
 import axios from '../../../lib/api'
 import Modal from 'react-modal';
 import moment from 'moment';
 import langCheaker from 'helpers/languages/langChanges'
 import s from './styles.module.css';
 import { ButtonWrap, ButtonAdd, ButtonDel, ButtonDelTour } from './styles.jsx'
-import img from '../../../assets/img/img0.jpg'
 
 class TourItem extends React.Component {
 
    state = {
       showModal: false,
       hamburgerActive: false,
-      imgFile: ''
    }
 
-   handleOpenModal = () => {
-      this.setState({ showModal: true });
-   }
-   handleCloseModal = () => {
-      // console.log('test');
+   handleOpenModal = () => this.setState({ showModal: true });
+   handleCloseModal = () => this.setState({ showModal: false });
 
-      this.setState({ showModal: false });
-   }
-
-   componentDidMount = () => {
-      axios(
-         {
-            method: 'get',
-            url: `/images/${this.props.image_uid}`,
-            Accept: 'image/jpg, image/jpeg, image/png'
-         }
-      )
-         .then((response) => {
-            console.log(response);
-            this.setState({
-               imgFile: `${response.config.baseURL}/${response.config.url}`,
-
-               // loadingAvatar: false
-            });
-            // console.log(response);
-         })
-         .catch((error) => {
-            console.log(error);
-         })
-   }
 
 
    delTourItem = () => {
@@ -53,12 +23,12 @@ class TourItem extends React.Component {
          .then((response) => {
             console.log(response);
             this.props.deleteTourInState(this.props.arrayNum)
+            this.props.createNotification(true, "Тур успішно видалено")
          })
          .catch((error) => {
             console.log(error);
+            this.props.createNotification(false, "Невдалось видалити тур")
          })
-
-      console.log(this.props.id);
    }
 
    addToHotTour = () => {
@@ -66,9 +36,11 @@ class TourItem extends React.Component {
          .then((response) => {
             console.log(response);
             this.props.changeIsSelected(this.props.arrayNum, true)
+            this.props.createNotification(true, "Тур добавлено в гарячі тури")
          })
          .catch((error) => {
             console.log(error);
+            this.props.createNotification(false, "Невдалось добавити тур в гарячі тури")
          })
 
    }
@@ -78,17 +50,17 @@ class TourItem extends React.Component {
          .then((response) => {
             console.log(response);
             this.props.changeIsSelected(this.props.arrayNum, false)
+            this.props.createNotification(true, "Тур видалено з гарячих турів")
          })
          .catch((error) => {
             console.log(error);
+            this.props.createNotification(false, "Невдалось видалити тур з гарячих турів")
          })
 
    }
 
-   // togglehamburgerActive = () => {
-   //    const hamburgerActive = this.state.hamburgerActive
-   //    this.setState({ hamburgerActive: !hamburgerActive })
-   // }
+   stringCheaker = (str) => str.length <= 30 ? str : `${str.substring(0, 30)}... `
+
 
    render() {
       let lang = localStorage.getItem('lang');
@@ -107,22 +79,22 @@ class TourItem extends React.Component {
                   <ButtonAdd onClick={this.addToHotTour} isSelected={this.props.isSelected}>Добавити в гарячі тури</ButtonAdd>
                   <ButtonDel onClick={this.deleteFromHotTours} isSelected={this.props.isSelected} mainPage={this.props.mainPage}>Видалити з гарячих турів</ButtonDel>
                </ButtonWrap>
-               <img src={this.state.imgFile} alt="test" />
+               <img src={this.props.image_uid} alt="test" />
                <div className={s.text}>
                   <p>{langObj.typeOfTrip}</p>
-                  <p>{this.props.tour.type}</p>
+                  <p>{this.stringCheaker(this.props.tour.type)}</p>
                </div>
                <div className={`${s.text} ${s.second}`}>
                   <p>{langObj.country}</p>
-                  <p>{this.props.tour.country}</p>
+                  <p>{this.stringCheaker(this.props.tour.country)}</p>
                </div>
                <div className={s.text}>
                   <p>{langObj.resort}</p>
-                  <p>{this.props.tour.resort}</p>
+                  <p>{this.stringCheaker(this.props.tour.resort)}</p>
                </div>
                <div className={`${s.text} ${s.second}`}>
                   <p>{langObj.departureFrom}</p>
-                  <p>{this.props.tour.departureFrom}</p>
+                  <p>{this.stringCheaker(this.props.tour.departureFrom)}</p>
                </div>
                <div className={s.text}>
                   <p>{langObj.departureDate}</p>
@@ -130,7 +102,7 @@ class TourItem extends React.Component {
                </div>
                <div className={`${s.text} ${s.second}`}>
                   <p>{langObj.hotel}</p>
-                  <p>{this.props.tour.hotel}</p>
+                  <p>{this.stringCheaker(this.props.tour.hotel)}</p>
                </div>
                <div className={s.text}>
                   <p>{langObj.hights}</p>
@@ -138,11 +110,11 @@ class TourItem extends React.Component {
                </div>
                <div className={`${s.text} ${s.second}`}>
                   <p>{langObj.food}</p>
-                  <p>{this.props.tour.food}</p>
+                  <p>{this.stringCheaker(this.props.tour.food)}</p>
                </div>
                <div className={s.text}>
                   <p>{langObj.insurance}</p>
-                  <p>{this.props.tour.insurance}</p>
+                  <p>{this.stringCheaker(this.props.tour.insurance)}</p>
                </div>
                <div className={`${s.text} ${s.second}`}>
                   <p>{langObj.price}</p>

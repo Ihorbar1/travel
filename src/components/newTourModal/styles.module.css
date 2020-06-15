@@ -8,13 +8,21 @@
    justify-content: center;
    align-items: center;
    max-width: 660px;
-   /* max-height: 900px; */
    height: 100vh;
-   /* margin: 0 auto; */
    background-color: #fff;
    border: 1px solid #000;
-   /* scrollbar-color: #a5a2a2 #000; */
    outline: none;
+}
+
+.spin_wrap {
+   position: absolute;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   width: 100%;
+   height: 100%;
+   background-color: rgba(0, 0, 0, 0.507);
+   z-index: 9999;
 }
 
 .form {
@@ -26,21 +34,13 @@
 
 .wrap {
    display: flex;
-   /* justify-content: space-around;
-   align-items: center; */
-   /* flex-wrap: wrap; */
    flex-direction: column;
    width: 500px;
    margin-bottom: 40px;
-   /* height: 500px; */
-   /* text-align: center; */
-   /* z-index: 9999; */
 }
 
 .wrap h3 {
-   /* text-align: center; */
    display: inline-block;
-   /* margin-top: 40px; */
    margin-bottom: 20px;
    padding-bottom: 10px;
    border-bottom: 2px solid #000;
@@ -52,7 +52,6 @@
    display: flex;
    flex-direction: column;
    justify-content: space-between;
-   /* align-items: center; */
    width: 100%;
    margin: 10px 0;
 }
@@ -81,10 +80,6 @@
    resize: none;
 }
 
-/* .modalInputText {
-   margin-top: 20px;
-
-} */
 
 .modalButton {
    box-sizing: border-box;
@@ -98,8 +93,6 @@
    height: 40px;
    background-color: #fff;
    font-size: 20px;
-   /* border-left: 1px solid #000;
-   border-bottom: 1px solid #000; */
    border: 1px solid #000;
    cursor: pointer;
    outline: none;
@@ -113,7 +106,6 @@
    justify-content: center;
    align-items: center;
    margin: 20px auto 0;
-   /* text-align: center; */
    background-color: #757dc9;
    border: 3px solid #757dc9;
    font-size: 18px;
@@ -124,9 +116,6 @@
 .modalButtonSend:hover {
    background-color: transparent;
 }
-
-
-/* html {} */
 
 
 .form::-webkit-scrollbar {
