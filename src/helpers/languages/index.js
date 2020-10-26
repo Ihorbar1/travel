@@ -2,22 +2,24 @@ const ua = {
    //HEADER AND FOOTER
    menuMainPage: 'Головна',
    menuToursPage: 'Тури',
-   menuServicesPage: 'Послуги',
+   menuServicesPage: 'Додаткові Послуги',
+   menuFeedbackPage: 'відгуки',
    menuContactPage: 'Контакти',
    footer: '© 2020 CoralTravel, Всі права захищені',
 
    //MAIN PAGE
-   mainHeader: 'Туристичні послуги',
+   mainHeader: 'Туристична фірма "ЧТЕІ-ТУР"',
+   mainHeaderSpan: '"Віртуальна навчально-тренінгова лабораторія"',
    hotToursHeader: 'Гарячі тури',
    // COMP ABOUT
    aboutHeader: 'Про нас',
-   aboutText1: 'Мрієте про незабутню подорож? Ви потрапили за адресою! «Coral Traver» - компанія, яка знає все про організацію відпочинку.',
+   aboutText1: 'Мрієте про незабутню подорож? Ви потрапили за адресою! "ЧТЕІ-ТУР" - компанія, яка знає все про організацію відпочинку.',
    aboutText2: 'Гарячі тури в будь-яку точку світу, весільні подорожі, круїзи, автобусні екскурсії - це і багато іншого можна замовити саме у нас.',
    aboutText3: 'Мінімум зусиль з Вашого боку - максимум яскравих вражень!',
    // COMP PARTNERS
    partnersHeader: 'Наші партнери',
    // COMP CERTIFICATES
-   certificateHeader: 'Наші сертифікати',
+   certificateHeader: 'Документи',
    certificateElem1: 'Банківська гарантія',
    certificateElem2: 'Виписка (зразок)',
    certificateElem3: 'Книга відгуків і пропозицій (зразок)',
@@ -41,6 +43,7 @@ const ua = {
    insurance: 'Страхування',
    price: 'Ціна',
    learnMore: 'Дізнатись більше',
+   modalTitle: 'Отримати інформацію про тур',
    name: 'Імя',
    phone: 'Телефон',
    email: 'Емейл',
@@ -48,7 +51,7 @@ const ua = {
    send: 'Відправити',
 
    //SERVICES PAGE
-   servicesHeader: 'Наші послуги',
+   servicesHeader: 'Додаткові Послуги',
    elem1Header: 'Авіаквитки',
    elem1Text1: 'У нас Ви можете забронювати і придбати авіаквитки у всі країни світу: на регулярні рейси, чертерні та бюджетні авіалінії. Ми підберемо для Вас найбільш вигідні та зручні авіаквитки',
    elem2Header: 'Юридична підтримка',
@@ -58,6 +61,15 @@ const ua = {
    elem3Text1: 'Збираєтесь у відпустку, відрядження чи на навчання в іншу країну? Саме час придбати страховий поліс «Подорожуючих за кордон». З полісом Ви можете бути впевнені, що несподівана хвороба чи травма не зіпсують Ваше перебування за кордоном. Страховий поліс гарантує отримання необхідної допомоги 24 години на добу в будь-якому куточку світу.',
    elem3Text2: 'Як користуватися полісом:',
    elem3Text3: "Обов'язково після настання стархового випадку, потрібно його зафіксувати протягом 24 годин Для цього наберіть номер гарячої лінії, що вказана у полісі та назвіть номер Вашого страхвого полісу.",
+
+   // FEEDBACK PAGE
+   feedbackHeader: 'Відгуки',
+   feedbackSecondHeader: 'Відгуки про компанію',
+   modalOpenBtn: 'Створити відгук',
+   // FEEDBACK CREATE MODAL
+   name: 'Імя',
+   description: 'Відгук',
+   sendBtn: 'Відправити',
 
 
    //CONTACT PAGE
@@ -81,22 +93,24 @@ const en = {
    //HEADER AND FOOTER
    menuMainPage: 'Main',
    menuToursPage: 'Tours',
-   menuServicesPage: 'Services',
+   menuServicesPage: 'Additional Services',
+   menuFeedbackPage: 'reviews',
    menuContactPage: 'Contacts',
    footer: '© 2020 CoralTravel, All rights reserved',
 
    //MAIN PAGE
-   mainHeader: 'Tourist services',
+   mainHeader: 'Travel company "CHTEI-TOUR"',
+   mainHeaderSpan: '"Virtual training laboratory"',
    hotToursHeader: 'Hot tours',
    // COMP ABOUT
    aboutHeader: 'About us',
-   aboutText1: 'Do you dream of an unforgettable trip? Youve come to the right place! Coral Traver is a company that knows everything about leisure.',
+   aboutText1: 'Do you dream of an unforgettable trip? Youve come to the right place! "CHTEI-TOUR" is a company that knows everything about leisure.',
    aboutText2: 'Hot tours to anywhere in the world, honeymoons, cruises, bus tours - this and much more can be ordered from us.',
    aboutText3: 'A minimum of effort on your part - a maximum of vivid impressions!',
    // COMP PARTNERS
    partnersHeader: 'Our partners',
    // COMP CERTIFICATES
-   certificateHeader: 'Our certificates',
+   certificateHeader: 'Documents',
    certificateElem1: 'Bank guarantee',
    certificateElem2: 'Extract (sample)',
    certificateElem3: 'Book of reviews and suggestions (sample)',
@@ -120,6 +134,7 @@ const en = {
    insurance: 'Insurance',
    price: 'Price',
    learnMore: 'Learn more',
+   modalTitle: 'Get tour information',
    name: 'Name',
    phone: 'Phone',
    email: 'E-mail',
@@ -127,7 +142,7 @@ const en = {
    send: 'Send',
 
    //SERVICES PAGE
-   servicesHeader: 'Our services',
+   servicesHeader: 'Additional Services',
    elem1Header: 'Flights',
    elem1Text1: 'Here you can book and buy tickets to all countries of the world: for regular flights, charter and budget airlines. We will select the most profitable and convenient tickets for you',
    elem2Header: 'Legal support',
@@ -137,6 +152,16 @@ const en = {
    elem3Text1: "Are you going on vacation, business trip or study in another country? It's time to buy a travel policy 'Travelers Abroad'. With a policy, you can be sure that an unexpected illness or injury will not spoil your stay abroad. The insurance policy guarantees the necessary assistance 24 hours a day, anywhere in the world.",
    elem3Text2: 'How to use the policy:',
    elem3Text3: "Be sure to record it within 24 hours after the occurrence of the insurance case. To do this, dial the number of the hotline specified in the policy and call the number of your insurance policy.",
+
+   // FEEDBACK PAGE
+   feedbackHeader: 'Reviews',
+   feedbackSecondHeader: 'Reviews about the company',
+   modalOpenBtn: 'Create a review',
+   // FEEDBACK CREATE MODAL
+   name: 'Name',
+   description: 'Response',
+   sendBtn: 'Send',
+
 
    //CONTACT PAGE
    contactHeader: 'Our contacts',
@@ -160,22 +185,24 @@ const ro = {
    //HEADER AND FOOTER
    menuMainPage: 'Acasă',
    menuToursPage: 'Tururi',
-   menuServicesPage: 'Servicii',
+   menuServicesPage: 'Servicii aditionale',
+   menuFeedbackPage: 'recenzii',
    menuContactPage: 'Contacte',
    footer: '© 2020 CoralTravel, Toate drepturile rezervate',
 
    //MAIN PAGE
-   mainHeader: 'Servicii turistice',
+   mainHeader: 'Companie de turism "CHTEI-TOUR"',
+   mainHeaderSpan: '"Laborator virtual de instruire"',
    hotToursHeader: 'Tururi calde',
    // COMP ABOUT
    aboutHeader: 'Despre noi',
-   aboutText1: 'Visezi o călătorie de neuitat? Ai ajuns la locul potrivit! Coral Traver este o companie care știe totul despre timpul liber.',
+   aboutText1: 'Visezi o călătorie de neuitat? Ai ajuns la locul potrivit! "CHTEI-TOUR" este o companie care știe totul despre timpul liber.',
    aboutText2: 'Tururi calde către oriunde în lume, luna de miere, croaziere, tururi cu autobuzul - acest lucru și multe altele pot fi comandate de la noi.',
    aboutText3: 'Un efort minim din partea ta - un maxim de impresii vii!',
    // COMP PARTNERS
    partnersHeader: 'Partenerii noștri',
    // COMP CERTIFICATES
-   certificateHeader: 'Certificatele noastre',
+   certificateHeader: 'Documente',
    certificateElem1: 'garantie bancara',
    certificateElem2: 'Extras (probă)',
    certificateElem3: 'Carte de recenzii și sugestii (eșantion)',
@@ -199,6 +226,7 @@ const ro = {
    insurance: 'Asigurare',
    price: 'Preț',
    learnMore: 'Aflați mai multe',
+   modalTitle: 'Obțineți informații despre tur',
    name: 'Nume',
    phone: 'Telefon',
    email: 'E-mail',
@@ -206,7 +234,7 @@ const ro = {
    send: 'Trimite',
 
    //SERVICES PAGE
-   servicesHeader: 'Serviciile noastre',
+   servicesHeader: 'Servicii aditionale',
    elem1Header: 'Zboruri',
    elem1Text1: 'Aici puteți rezerva și cumpăra bilete către toate țările lumii: pentru zboruri regulate, linii aeriene charter și buget. Vom selecta cele mai profitabile și convenabile bilete pentru dvs.',
    elem2Header: 'Suport legal',
@@ -216,6 +244,16 @@ const ro = {
    elem3Text1: 'Mergi în vacanță, călătorie de afaceri sau studiezi într-o altă țară? Este timpul să cumpărați o politică de călătorie „Călătorii în străinătate”. Cu o poliță, puteți fi sigur că o boală sau o vătămare neașteptată nu vă vor strica șederea în străinătate. Polita de asigurare garantează asistența necesară 24 de ore pe zi, oriunde în lume.',
    elem3Text2: 'Cum se folosește politica:',
    elem3Text3: "Este obligatoriu să o înregistrați în 24 de ore de la apariția cazului de asigurare. Pentru a face acest lucru, formați numărul liniei de telefon specificat în poliță și denumiți numărul poliței de asigurare.",
+
+   // FEEDBACK PAGE
+   feedbackHeader: 'Recenzii',
+   feedbackSecondHeader: 'Recenzii despre companie',
+   modalOpenBtn: 'Creați o recenzie',
+   // FEEDBACK CREATE MODAL
+   name: 'Nume',
+   description: 'Raspuns',
+   sendBtn: 'Trimite',
+
 
    //CONTACT PAGE
    contactHeader: 'Contactele noastre',
@@ -234,4 +272,8 @@ const ro = {
    mapButton: 'Mergeți pe hartă',
 };
 
-export { ua, en, ro };
+export {
+   ua,
+   en,
+   ro
+};

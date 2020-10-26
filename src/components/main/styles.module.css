@@ -1,11 +1,13 @@
 .main {
    display: flex;
    justify-content: center;
+   width: 100%;
    align-items: center;
    height: 550px;
    background-image: url(../../assets/img/main.jpg);
    background-repeat: no-repeat;
-   background-attachment: fixed;
+   background-size: cover;
+   background-position: center center;
    color: #fff;
    font-size: 35px;
    letter-spacing: 2px;

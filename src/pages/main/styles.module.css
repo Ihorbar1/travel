@@ -7,7 +7,12 @@
    background-position: center center;
 }
 
-.mainElem span {
+.mainHeader {
+   display: flex;
+   flex-direction: column;
+}
+
+.mainElem .mainHeader {
    position: absolute;
    display: flex;
    justify-content: center;
@@ -17,11 +22,17 @@
    background-color: rgba(0, 0, 0, 0.562);
 }
 
-span p {
+.mainHeader h1 {
    color: #fff;
    font-size: 64px;
    text-shadow: 4px 4px 2px #000000;
    font-weight: 800;
+}
+
+.mainHeader span {
+   font-size: 27px;
+   color: #fff;
+   text-shadow: 4px 4px 2px #000000;
 }
 
 .tour {

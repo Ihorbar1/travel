@@ -74,19 +74,21 @@ export default class extends React.Component {
    }
 
    createTour = (e) => {
-      const nueTour = { ...this.state.nueTour, [e.target.name]: e.target.value }
-      this.setState({ nueTour })
+      const nueTour = { ...this.state.nueTour, [e.target.name]: e.target.value };
+      this.setState({ nueTour });
    }
 
    formValidation = (e) => {
-      let emptyValidation = true;
-      Object.keys(this.state.isFormValid).map(item => !this.state.isFormValid[item] ? emptyValidation = false : emptyValidation = true)
-      this.state.file !== '' ? emptyValidation = true : emptyValidation = false
-      this.setState({ checkValidation: true })
-      e.preventDefault()
-      emptyValidation ? this.createTours(e) : e.preventDefault();
-      // this.createTours(e)
-      this.createNotification(emptyValidation)
+      let textValidation = true;
+      let imgValidation = false;
+      Object.keys(this.state.isFormValid).map(item => !this.state.isFormValid[item] ? textValidation = false : textValidation = true);
+      this.state.file !== '' ? imgValidation = true : imgValidation = false;
+      this.setState({ checkValidation: true });
+      e.preventDefault();
+      textValidation && imgValidation ? this.createTours(e) : e.preventDefault();
+      // this.createTours(e);
+      this.createNotification(textValidation, "Проблема!", "Помилка при створенні туру");
+      this.createNotification(imgValidation, "Проблема!", "Виберіть фотографію");
    }
 
    createTours = (e) => {
@@ -122,13 +124,13 @@ export default class extends React.Component {
       this.setState({ isFormValid })
    }
 
-   createNotification = (typeOfNotification) => {
+   createNotification = (typeOfNotification, title, message) => {
       if (!typeOfNotification) {
          store.addNotification(
             {
                ...error,
-               title: "Проблема!",
-               message: "Помилка при створенні туру",
+               title: title,
+               message: message,
             })
       }
    }

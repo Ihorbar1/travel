@@ -1,0 +1,67 @@
+
+
+.feedbackWrap{
+   position: relative;
+   width: 100%;
+   /* height: 100vh; */
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   flex-direction: column;
+
+}
+
+.feedbackItem{
+   position: relative;
+   display: flex;
+   flex-direction: column;
+   width: 600px;
+   margin-bottom: 100px;
+   padding: 20px;
+   box-shadow: 0px 0px 10px 0px #423e2333;
+   /* border: 1px solid #000; */
+}
+
+.userInfo{
+   display: flex;
+   align-items: center;
+   /* border-bottom: 1px solid #000; */
+}
+.userInfo img{
+   width: 50px;
+   height: 50px;
+   padding-right: 20px;
+   /* border-right: 1px solid #000; */
+}
+.userInfo p{
+   text-transform: uppercase;
+}
+
+.feedbackDescription{
+   margin-top: 20px;
+}
+
+.feedbackDelBtn{
+   position: absolute;
+   top: 0;
+   right: 0;
+   width: 30px;
+   height: 30px;
+   background-color: #d64646;
+   border:   none;
+   font-size: 18px;
+   cursor: pointer;
+}
+
+.openModal{
+   position: absolute;
+   top: 40px;
+   right: 10px;
+   width: 150px;
+   height: 40px;
+   background-color: #73bdcf;
+   cursor: pointer;
+   border:   none;
+}
+
+

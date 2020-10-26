@@ -6,7 +6,6 @@
 .wrap {
    display: flex;
    justify-content: space-between;
-   /* align-items: center; */
    flex-wrap: wrap;
    max-width: 1200px;
    margin: 0 auto;
@@ -14,9 +13,7 @@
 
 .item {
    width: 400px;
-   /* height: 500px; */
    margin: 20px 50px;
-   /* background-color: #463535; */
 }
 
 .wrap h3 {

@@ -1,9 +1,9 @@
 import React from 'react';
 import langCheaker from '../../helpers/languages/langChanges'
 import s from './styles.module.css'
-import partner1 from '../../assets/img/similio-seeklogo.com.svg'
-import partner2 from '../../assets/img/semantic-web.svg'
-import partner3 from '../../assets/img/svelte.svg'
+import partner1 from '../../assets/img/buko.svg'
+import partner2 from '../../assets/img/mygovo.svg'
+import partner3 from '../../assets/img/dolyna.svg'
 import partner4 from '../../assets/img/chromatic.svg'
 import partner5 from '../../assets/img/apigee.svg'
 import partner6 from '../../assets/img/akamai.svg'
@@ -22,42 +22,42 @@ export default class extends React.Component {
          <div className={s.part}>
             <h2>{langObj.partnersHeader}</h2>
             <div className={s.wrap}>
-               <div className={s.elem}>
+               <a href="https://bukovel.com/" target="_blank" rel="noopener noreferrer" className={s.elem}>
                   <img src={partner1} alt="" />
-               </div>
-               <div className={s.elem}>
+               </a>
+               <a href="http://migovo.com.ua/" target="_blank" rel="noopener noreferrer" className={s.elem}>
                   <img src={partner2} alt="" />
-               </div>
-               <div className={s.elem}>
+               </a>
+               <a href="https://www.soniachna-dolina.com/?gclid=CjwKCAjwrKr8BRB_EiwA7eFapvW9NGSjvghqzfe7Z6iMZBdVJJtQUzN408bHYl8uvnz_MTzl1r0vABoCVQIQAvD_BwE" target="_blank" rel="noopener" className={s.elem}>
                   <img src={partner3} alt="" />
-               </div>
-               <div className={s.elem}>
+               </a>
+               <a href="https://bukovel.com/" target="_blank" rel="noopener noreferrer" className={s.elem}>
                   <img src={partner4} alt="" />
-               </div>
-               <div className={s.elem}>
+               </a>
+               <a href="https://bukovel.com/" target="_blank" rel="noopener noreferrer" className={s.elem}>
                   <img src={partner5} alt="" />
-               </div>
-               <div className={s.elem}>
+               </a>
+               <a href="https://bukovel.com/" target="_blank" rel="noopener noreferrer" className={s.elem}>
                   <img src={partner6} alt="" />
-               </div>
-               <div className={s.elem}>
+               </a>
+               <a href="https://bukovel.com/" target="_blank" rel="noopener noreferrer" className={s.elem}>
                   <img src={partner7} alt="" />
-               </div>
-               <div className={s.elem}>
+               </a>
+               <a href="https://bukovel.com/" target="_blank" rel="noopener noreferrer" className={s.elem}>
                   <img src={partner8} alt="" />
-               </div>
-               <div className={s.elem}>
+               </a>
+               <a href="https://bukovel.com/" target="_blank" rel="noopener noreferrer" className={s.elem}>
                   <img src={partner9} alt="" />
-               </div>
-               <div className={s.elem}>
+               </a>
+               <a href="https://bukovel.com/" target="_blank" rel="noopener noreferrer" className={s.elem}>
                   <img src={partner10} alt="" />
-               </div>
-               <div className={s.elem}>
+               </a>
+               <a href="https://bukovel.com/" target="_blank" rel="noopener noreferrer" className={s.elem}>
                   <img src={partner11} alt="" />
-               </div>
-               <div className={s.elem}>
+               </a>
+               <a href="https://bukovel.com/" target="_blank" rel="noopener noreferrer" className={s.elem}>
                   <img src={partner12} alt="" />
-               </div>
+               </a>
             </div>
          </div>
       )

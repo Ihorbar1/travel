@@ -132,6 +132,7 @@ class TourItem extends React.Component {
 
                      {Modal.setAppElement('#root')}
                      <div onClick={this.handleCloseModal} className={s.modalButton}>X</div>
+                     <h3>{langObj.modalTitle}</h3>
                      <p className={s.modalInputText}>{langObj.name}</p>
                      <input type="text" className={s.modalInput} />
                      <p className={s.modalInputText}>{langObj.phone}</p>

@@ -1,0 +1,28 @@
+.conteiner{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+.conteiner h2{
+   /* text-align: center; */
+}
+.infoElem{
+   display: flex;
+   flex-direction: column;
+   width: 700px;
+   padding-bottom: 10px;
+   /* border-bottom: 1px solid #000; */
+}
+.infoElem h3{
+   /* display: inline-block; */
+   /* padding-bottom: 5px; */
+   /* border-bottom: 1px solid #000; */
+   margin-top: 20px;
+   font-size: 29px;
+}
+.infoElem a{
+   font-size: 20px;
+   text-decoration: none;
+   margin: 10px 0;
+}

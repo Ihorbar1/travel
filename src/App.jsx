@@ -10,6 +10,8 @@ import Main from './pages/main'
 import Services from './pages/services'
 import Contact from './pages/contact'
 import Login from './pages/login'
+import Feedback from './pages/feedback'
+import Instruments from './pages/instruments'
 import './styles.css'
 
 const customHistory = createBrowserHistory();
@@ -37,6 +39,12 @@ export default class extends React.Component {
                   </Route>
                   <Route exact path="/login"
                      render={() => <Login />}>
+                  </Route>
+                  <Route exact path="/feedback"
+                     render={() => <Feedback />}>
+                  </Route>
+                  <Route exact path="/inst"
+                     render={() => <Instruments />}>
                   </Route>
                </Switch>
             </Router>

@@ -71,3 +71,9 @@ header {
 .menu ul li>a:hover {
 	background-color: #9da3ac;
 }
+
+@media screen and (max-width: 1400px) {
+	.wrap {
+		padding: 0 30px;
+	}
+}

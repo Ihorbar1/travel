@@ -72,7 +72,11 @@ export default class extends React.Component {
          <>
             <Header changeHead={this.changeHead} />
             <ReactNotification />
-            <div className={s.mainElem}> <span><p>{langObj.mainHeader}</p></span> </div>
+            <div className={s.mainElem}> <div className={s.mainHeader}>
+               <h1>{langObj.mainHeader}</h1>
+               <span>{langObj.mainHeaderSpan}</span>
+            </div>
+            </div>
             {this.state.tours[0] !== undefined ? (
                <section className={s.tour}>
                   <h2>{langObj.hotToursHeader}</h2>

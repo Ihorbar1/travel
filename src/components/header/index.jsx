@@ -48,13 +48,14 @@ export default class extends React.Component {
                         <li><Link to="/">{langObj.menuMainPage}</Link></li>
                         <li><Link to="/tours">{langObj.menuToursPage}</Link></li>
                         <li><Link to="/services">{langObj.menuServicesPage}</Link></li>
+                        <li><Link to="/feedback">{langObj.menuFeedbackPage}</Link></li>
                         <li><Link to="/contact">{langObj.menuContactPage}</Link></li>
                      </ul>
                      <Select
                         onChange={(e) => this.changeHead(e)}
                         options={options}
                         className={s.select}
-                        defaultValue={lang === 'ua' ? options[0] : lang === 'en' ? options[1] : options[2]}
+                        defaultValue={lang === 'en' ? options[1] : lang === 'ro' ? options[2] : options[0]}
                      />
                      {role === 'admin' ? <button className={s.logOut} onClick={this.logOut}>Вихід</button> : ''}
                   </div>
