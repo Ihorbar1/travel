@@ -7,7 +7,10 @@ export default class extends React.Component {
       return (
          <>
             <section className={s.main}>
-               <h1>{this.props.text}</h1>
+               <div className={s.wrap}>
+
+                  <h1>{this.props.text}</h1>
+               </div>
             </section>
          </>
       )
