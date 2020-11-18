@@ -34,7 +34,7 @@ const ua = {
    //COMP TOURITEM ELEMENTS
    typeOfTrip: 'Тип подорожі',
    country: 'Країна',
-   resort: 'Курорт',
+   resort: 'Курорт / місто',
    departureFrom: 'Виліт із',
    departureDate: 'Дата вильоту/виїзду',
    hotel: 'Готель',
@@ -83,9 +83,9 @@ const ua = {
    formSend: 'Відправити',
    //MAP
    mapHeader: 'Контакти',
-   mapPhone: 'Тел: (044) 492-95-99',
-   mapEmail: 'E-mail: reklama@orimi.com.ua',
-   mapAddress: 'Адрес: 03126, г. Киев, ул. Академика Белецкого, 30',
+   mapPhone: 'Тел: +380372511158',
+   mapEmail: 'E-mail: helper.tour20@gmail.com',
+   mapAddress: 'Центральна площа, 7, Чернівці, Чернівецька область, 58000',
    mapButton: 'Перейти на карту',
 };
 
@@ -125,7 +125,7 @@ const en = {
    //COMP TOURITEM ELEMENTS
    typeOfTrip: 'Type of trip',
    country: 'Country',
-   resort: 'Resort',
+   resort: 'Resort / city',
    departureFrom: 'Departure from',
    departureDate: 'Departure / departure date',
    hotel: 'Hotel',
@@ -174,9 +174,9 @@ const en = {
    formSend: 'Send',
    //MAP
    mapHeader: 'Contacts',
-   mapPhone: 'Phone: (044) 492-95-99',
-   mapEmail: 'E-mail: reklama@orimi.com.en',
-   mapAddress: 'Address: 03126, Kiev st. Academician Beletsky, 30',
+   mapPhone: 'Phone: +380372511158',
+   mapEmail: 'E-mail: helper.tour20@gmail.com',
+   mapAddress: 'Central Square, 7, Chernivtsi, Chernivtsi region, 58000',
    mapButton: 'Go to the map',
 
 };
@@ -217,7 +217,7 @@ const ro = {
    //COMP TOURITEM ELEMENTS
    typeOfTrip: 'Tipul călătoriei',
    country: 'Țară',
-   resort: 'Resort',
+   resort: 'Stațiune / oraș',
    departureFrom: 'Plecare din',
    departureDate: 'Data de plecare',
    hotel: 'Hotel',
@@ -266,9 +266,9 @@ const ro = {
    formSend: 'Send',
    //MAP
    mapHeader: 'Contacte',
-   mapPhone: 'Telefon: (044) 492-95-99',
-   mapEmail: 'E-mail: reklama@orimi.com.ro',
-   mapAddress: 'Address: 03126, Kiev st. Academician Beletsky, 30',
+   mapPhone: 'Telefon: +380372511158',
+   mapEmail: 'E-mail: rhelper.tour20@gmail.com',
+   mapAddress: 'Piața Centrală, 7, Cernăuți, regiunea Cernăuți, 58000',
    mapButton: 'Mergeți pe hartă',
 };
 
