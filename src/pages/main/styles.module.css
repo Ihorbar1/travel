@@ -45,7 +45,7 @@
 
 .items {
    display: flex;
-   justify-content: stretch;
+   justify-content: space-around;
    flex-wrap: wrap;
    max-width: 1400px;
    margin: 0 auto;

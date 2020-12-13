@@ -217,9 +217,9 @@ export default class extends React.Component {
                      />
                   </div>
                   <div className={s.item}>
-                     <p className={s.modalInputText}>Виліт із</p>
+                     <p className={s.modalInputText}>Приліт / приїзд</p>
                      <NewInput name="ukrainianDepartureFrom"
-                        type={"text"}
+                        type={"date"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.ukrainianDepartureFrom}
@@ -227,17 +227,7 @@ export default class extends React.Component {
                         changeValidationFlag={this.changeValidationFlag}
                      />
                   </div>
-                  <div className={s.item}>
-                     <p className={s.modalInputText}>Дата вильоту/виїзду</p>
-                     <NewInput name="departureDate"
-                        type={"date"}
-                        createTour={this.createTour}
-                        patern={"empty"}
-                        isFormValid={this.state.isFormValid.departureDate}
-                        checkValidation={this.state.checkValidation}
-                        changeValidationFlag={this.changeValidationFlag}
-                     />
-                  </div>
+
                   <div className={s.item}>
                      <p className={s.modalInputText}>Готель</p>
                      <NewInput name="ukrainianHotel"
@@ -254,7 +244,7 @@ export default class extends React.Component {
                      <NewInput name="nights"
                         type={"text"}
                         createTour={this.createTour}
-                        patern={"num"}
+                        patern={"empty"}
                         isFormValid={this.state.isFormValid.nights}
                         checkValidation={this.state.checkValidation}
                         changeValidationFlag={this.changeValidationFlag}
@@ -283,11 +273,22 @@ export default class extends React.Component {
                      />
                   </div>
                   <div className={s.item}>
+                     <p className={s.modalInputText}>Дата вильоту/виїзду</p>
+                     <NewInput name="departureDate"
+                        type={"date"}
+                        createTour={this.createTour}
+                        patern={"empty"}
+                        isFormValid={this.state.isFormValid.departureDate}
+                        checkValidation={this.state.checkValidation}
+                        changeValidationFlag={this.changeValidationFlag}
+                     />
+                  </div>
+                  <div className={s.item}>
                      <p className={s.modalInputText}>Ціна</p>
                      <NewInput name="price"
                         type={"text"}
                         createTour={this.createTour}
-                        patern={"num"}
+                        patern={"empty"}
                         isFormValid={this.state.isFormValid.price}
                         checkValidation={this.state.checkValidation}
                         changeValidationFlag={this.changeValidationFlag}

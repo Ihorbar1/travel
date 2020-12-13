@@ -7,8 +7,10 @@
 
 .items {
    display: flex;
-   justify-content: stretch;
-   flex-wrap: wrap;
+   justify-content: space-around;
+   align-items: center;
+   /* flex-wrap: wrap; */
+   flex-flow: row wrap;
    max-width: 1400px;
    margin: 0 auto;
 }

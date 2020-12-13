@@ -59,7 +59,7 @@ class TourItem extends React.Component {
 
    }
 
-   stringCheaker = (str) => str.length <= 30 ? str : `${str.substring(0, 30)}... `
+   stringCheaker = (str) => str.length <= 35 ? str : `${str.substring(0, 35)}... `
 
 
    render() {
@@ -82,43 +82,45 @@ class TourItem extends React.Component {
                <img src={this.props.image_uid} alt="test" />
                <div className={s.text}>
                   <p>{langObj.typeOfTrip}</p>
-                  <p>{this.stringCheaker(this.props.tour.type)}</p>
+                  <p title={this.props.tour.type}>{this.stringCheaker(this.props.tour.type)}</p>
                </div>
                <div className={`${s.text} ${s.second}`}>
                   <p>{langObj.country}</p>
-                  <p>{this.stringCheaker(this.props.tour.country)}</p>
+                  <p title={this.props.tour.country}>{this.stringCheaker(this.props.tour.country)}</p>
                </div>
                <div className={s.text}>
                   <p>{langObj.resort}</p>
-                  <p>{this.stringCheaker(this.props.tour.resort)}</p>
+                  <p title={this.props.tour.resort}>{this.stringCheaker(this.props.tour.resort)}</p>
+               </div>
+
+               <div className={s.text}>
+                  <p>{langObj.arrival}</p>
+                  <p>{moment(this.props.tour.departureFrom).format('L')}</p>
+               </div>
+
+               <div className={`${s.text} ${s.second}`}>
+                  <p>{langObj.hotel}</p>
+                  <p title={this.props.tour.hotel}>{this.stringCheaker(this.props.tour.hotel)}</p>
+               </div>
+               <div className={s.text}>
+                  <p>{langObj.hights}</p>
+                  <p title={this.props.tour.nights}>{this.props.tour.nights}</p>
                </div>
                <div className={`${s.text} ${s.second}`}>
-                  <p>{langObj.departureFrom}</p>
-                  <p>{this.stringCheaker(this.props.tour.departureFrom)}</p>
+                  <p>{langObj.food}</p>
+                  <p title={this.props.tour.food}>{this.stringCheaker(this.props.tour.food)}</p>
+               </div>
+               <div className={s.text}>
+                  <p>{langObj.insurance}</p>
+                  <p title={this.props.tour.insurance}>{this.stringCheaker(this.props.tour.insurance)}</p>
                </div>
                <div className={s.text}>
                   <p>{langObj.departureDate}</p>
                   <p>{moment(this.props.tour.departureDate).format('L')}</p>
                </div>
                <div className={`${s.text} ${s.second}`}>
-                  <p>{langObj.hotel}</p>
-                  <p>{this.stringCheaker(this.props.tour.hotel)}</p>
-               </div>
-               <div className={s.text}>
-                  <p>{langObj.hights}</p>
-                  <p>{this.props.tour.nights}</p>
-               </div>
-               <div className={`${s.text} ${s.second}`}>
-                  <p>{langObj.food}</p>
-                  <p>{this.stringCheaker(this.props.tour.food)}</p>
-               </div>
-               <div className={s.text}>
-                  <p>{langObj.insurance}</p>
-                  <p>{this.stringCheaker(this.props.tour.insurance)}</p>
-               </div>
-               <div className={`${s.text} ${s.second}`}>
                   <p>{langObj.price}</p>
-                  <p>${this.props.tour.price}</p>
+                  <p title={this.props.tour.price}>{this.props.tour.price}</p>
                </div>
                <div className={s.text}>
                   <p></p>

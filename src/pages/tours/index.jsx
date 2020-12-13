@@ -28,10 +28,9 @@ export default class extends React.Component {
          .catch((error) => {
             console.log(error);
          })
-
    }
-   componentDidMount = () => {
 
+   componentDidMount = () => {
       this.getTours()
    }
 
@@ -76,7 +75,9 @@ export default class extends React.Component {
 
    render() {
       let lang = localStorage.getItem('lang');
+
       const role = localStorage.getItem('role')
+
       let langObj = langCheaker(lang);
 
       return (
@@ -101,6 +102,7 @@ export default class extends React.Component {
                </div>}
 
                {role === 'admin' ? <div onClick={this.handleOpenModal} className={s.nueTourBut}>+</div> : ''}
+
                <NewTourModal showModal={this.state.showModal} closeModal={this.handleCloseModal} />
             </section>
             <Footer />

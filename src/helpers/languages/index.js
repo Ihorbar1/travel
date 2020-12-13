@@ -5,7 +5,7 @@ const ua = {
    menuServicesPage: 'Додаткові Послуги',
    menuFeedbackPage: 'відгуки',
    menuContactPage: 'Контакти',
-   footer: '© 2020 CoralTravel, Всі права захищені',
+   footer: `© ${new Date().getFullYear()} ЧТЕІ-ТУР, Всі права захищені`,
 
    //MAIN PAGE
    mainHeader: 'Туристична фірма "ЧТЕІ-ТУР"',
@@ -35,7 +35,7 @@ const ua = {
    typeOfTrip: 'Тип подорожі',
    country: 'Країна',
    resort: 'Курорт / місто',
-   departureFrom: 'Виліт із',
+   arrival: 'Приліт / приїзд',
    departureDate: 'Дата вильоту/виїзду',
    hotel: 'Готель',
    hights: 'Ночей',
@@ -96,7 +96,7 @@ const en = {
    menuServicesPage: 'Additional Services',
    menuFeedbackPage: 'reviews',
    menuContactPage: 'Contacts',
-   footer: '© 2020 CoralTravel, All rights reserved',
+   footer: `© ${new Date().getFullYear()} ЧТЕІ-ТУР, All rights reserved`,
 
    //MAIN PAGE
    mainHeader: 'Travel company "CHTEI-TOUR"',
@@ -126,8 +126,8 @@ const en = {
    typeOfTrip: 'Type of trip',
    country: 'Country',
    resort: 'Resort / city',
-   departureFrom: 'Departure from',
-   departureDate: 'Departure / departure date',
+   arrival: 'Arrival',
+   departureDate: 'Departure date',
    hotel: 'Hotel',
    hights: 'Hights',
    food: 'Food',
@@ -188,7 +188,7 @@ const ro = {
    menuServicesPage: 'Servicii aditionale',
    menuFeedbackPage: 'recenzii',
    menuContactPage: 'Contacte',
-   footer: '© 2020 CoralTravel, Toate drepturile rezervate',
+   footer: `© ${new Date().getFullYear()} ЧТЕІ-ТУР, Toate drepturile rezervate`,
 
    //MAIN PAGE
    mainHeader: 'Companie de turism "CHTEI-TOUR"',
@@ -218,7 +218,7 @@ const ro = {
    typeOfTrip: 'Tipul călătoriei',
    country: 'Țară',
    resort: 'Stațiune / oraș',
-   departureFrom: 'Plecare din',
+   arrival: 'Sosire',
    departureDate: 'Data de plecare',
    hotel: 'Hotel',
    hights: 'Nopți',

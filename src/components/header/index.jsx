@@ -41,7 +41,7 @@ export default class extends React.Component {
                <div className={s.wrap}>
 
                   <div className={s.logo}>
-                     <Link to="/"><img src={img} alt="" /></Link>
+                     <Link className={s.logoText} to="/">ЧТЕІ-ТУР</Link>
                   </div>
                   <div className={s.menu}>
                      <ul>
