@@ -46,6 +46,9 @@ export default class extends React.Component {
                   <Route exact path="/inst"
                      render={() => <Instruments />}>
                   </Route>
+                  <Route exact path="*"
+                     render={() => <p className="error404">404. this page was not found</p>}>
+                  </Route>
                </Switch>
             </Router>
          </>

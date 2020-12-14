@@ -16,8 +16,8 @@ export default class extends React.Component {
          patern = /^[ 0-9]+$/;
          validText = "Можна вводити тільки числа"
       } else if (patern === "empty") {
-         patern = /^[a-zа-яёі 0-9 /., -]+$/i;
-         validText = "Можна вводити тільки текст"
+         patern = /^[a-zа-яёіЇє 0-9 () /., - +=_*?:;%№$!"'|]+$/i;
+         validText = ""
       } else {
          console.log("НЕПРАВИЛЬНО");
       }
@@ -28,7 +28,7 @@ export default class extends React.Component {
 
       } else if (!e.target.value.match(patern)) {
          this.setState({ validText })
-         this.props.changeValidationFlag(this.props.name, false)
+         this.props.changeValidationFlag(this.props.name, true)
 
       } else {
          this.setState({ validText: "" })

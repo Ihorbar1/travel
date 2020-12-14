@@ -320,7 +320,7 @@ export default class extends React.Component {
                      />
                   </div>
                   <div className={s.item}>
-                     <p className={s.modalInputText}>Курорт</p>
+                     <p className={s.modalInputText}>Курорт/місто</p>
                      <NewInput name="englishResort"
                         type={"text"}
                         createTour={this.createTour}
@@ -333,7 +333,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Виліт із</p>
                      <NewInput name="englishDepartureFrom"
-                        type={"text"}
+                        type={"date"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.englishDepartureFrom}
@@ -413,7 +413,7 @@ export default class extends React.Component {
                   <div className={s.item}>
                      <p className={s.modalInputText}>Виліт із</p>
                      <NewInput name="romanianResort"
-                        type={"text"}
+                        type={"date"}
                         createTour={this.createTour}
                         patern={"empty"}
                         isFormValid={this.state.isFormValid.romanianResort}
