@@ -9,7 +9,7 @@ const ua = {
 
    //MAIN PAGE
    mainHeader: 'Туристична фірма "ЧТЕІ-ТУР"',
-   mainHeaderSpan: '"Віртуальна навчально-тренінгова лабораторія"',
+   mainHeaderSpan: '"Віртуальна тренінгова лабораторія"',
    hotToursHeader: 'Гарячі тури',
    // COMP ABOUT
    aboutHeader: 'Про нас',
