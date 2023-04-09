@@ -19,16 +19,19 @@ class TourItem extends React.Component {
 
 
    delTourItem = () => {
-      axios.delete(`/api/delete-tour/${this.props.id}`)
-         .then((response) => {
-            console.log(response);
-            this.props.deleteTourInState(this.props.arrayNum)
-            this.props.createNotification(true, "Тур успішно видалено")
-         })
-         .catch((error) => {
-            console.log(error);
-            this.props.createNotification(false, "Невдалось видалити тур")
-         })
+      // axios.delete(`/api/delete-tour/${this.props.id}`)
+      //    .then((response) => {
+      //       console.log(response);
+      //       this.props.deleteTourInState(this.props.arrayNum)
+      //       this.props.createNotification(true, "Тур успішно видалено")
+      //    })
+      //    .catch((error) => {
+      //       console.log(error);
+      //       this.props.createNotification(false, "Невдалось видалити тур")
+      //    })
+
+      this.props.deleteItemFromList(this.props.id);
+      this.props.createNotification(true, "Тур успішно видалено")
    }
 
    addToHotTour = () => {
@@ -75,9 +78,9 @@ class TourItem extends React.Component {
                </span> : ''}
 
                <ButtonWrap className={s.buttonWrap} hamburgerActive={this.state.hamburgerActive} >
-                  <ButtonDelTour onClick={this.delTourItem} mainPage={this.props.mainPage}>Видалити тур</ButtonDelTour>
-                  <ButtonAdd onClick={this.addToHotTour} isSelected={this.props.isSelected}>Добавити в гарячі тури</ButtonAdd>
-                  <ButtonDel onClick={this.deleteFromHotTours} isSelected={this.props.isSelected} mainPage={this.props.mainPage}>Видалити з гарячих турів</ButtonDel>
+                  <ButtonDelTour onClick={this.delTourItem} mainPage={false}>Видалити тур</ButtonDelTour>
+                  {/* <ButtonAdd onClick={this.addToHotTour} isSelected={this.props.isSelected}>Добавити в гарячі тури</ButtonAdd>
+                  <ButtonDel onClick={this.deleteFromHotTours} isSelected={this.props.isSelected} mainPage={this.props.mainPage}>Видалити з гарячих турів</ButtonDel> */}
                </ButtonWrap>
                <img src={this.props.image_uid} alt="test" />
                <div className={s.text}>

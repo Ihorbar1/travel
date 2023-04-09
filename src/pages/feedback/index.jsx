@@ -17,7 +17,13 @@ class Feedback extends React.Component {
    state = {
       // descData: {},
 
-      feedbackViewData: [],
+      feedbackViewData: [
+         {
+            name: 'test',
+            description: 'some text',
+            id: 1,
+         }
+      ],
       showModal: false,
       load: true,
    }
@@ -66,28 +72,37 @@ class Feedback extends React.Component {
    }
    delFeedback = (id) => {
 
-      axios.delete(`/api/delete-feedback/${id}`)
-         .then((response) => {
-            console.log(response);
-            this.getFeedback();
-            this.createNotification(true, "Відгук успішно видалено");
-         })
-         .catch((error) => {
-            console.log(error);
-            this.createNotification(false, "Невдалось видалити відгук");
-         })
+      let feedbackViewDataList = this.state.feedbackViewData;
+
+      const index = feedbackViewDataList.findIndex(obj => obj.id === id);
+      if (index !== -1) {
+         feedbackViewDataList.splice(index, 1);
+      }
+
+      this.setState({ feedbackViewData: feedbackViewDataList })
+
+      // axios.delete(`/api/delete-feedback/${id}`)
+      //    .then((response) => {
+      //       console.log(response);
+      //       this.getFeedback();
+      //       this.createNotification(true, "Відгук успішно видалено");
+      //    })
+      //    .catch((error) => {
+      //       console.log(error);
+      //       this.createNotification(false, "Невдалось видалити відгук");
+      //    })
 
    }
    componentDidMount = () => {
 
-      this.getFeedback();
+      // this.getFeedback();
 
    }
 
    viewFeedback = () => {
       const role = localStorage.getItem('role')
       let feedbackViewData = this.state.feedbackViewData;
-      feedbackViewData = feedbackViewData.reverse();
+      // feedbackViewData = feedbackViewData.reverse();
       const view = feedbackViewData.map(item => {
          return (<div className={s.feedbackItem}>
             <div className={s.userInfo}>
@@ -99,6 +114,11 @@ class Feedback extends React.Component {
          </div>)
       });
       return view;
+   }
+
+   updateFeedbackList = (item) => {
+      const updatedList = [...this.state.feedbackViewData, item];
+      this.setState({ feedbackViewData: updatedList });
    }
 
 
@@ -115,11 +135,17 @@ class Feedback extends React.Component {
             <h2>{langObj.feedbackSecondHeader}</h2>
             <button className={s.openModal} onClick={this.handleOpenModal}>{langObj.modalOpenBtn}</button>
             <div className={s.feedbackConteiner}>
-               {this.state.load ? <Spiner /> : this.viewFeedback()}
+               { this.viewFeedback()}
             </div>
          </div>
          <Footer />
-         <FeedbackModal showModal={this.state.showModal} handleCloseModal={this.handleCloseModal} getFeedback={this.getFeedback} createSuccessNotificationInModal={this.createSuccessNotificationInModal} />
+         <FeedbackModal
+            updateFeedbackList={this.updateFeedbackList}
+            showModal={this.state.showModal}
+            handleCloseModal={this.handleCloseModal}
+            getFeedback={this.getFeedback}
+            createSuccessNotificationInModal={this.createSuccessNotificationInModal}
+         />
 
       </>)
    }

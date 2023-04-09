@@ -13,6 +13,7 @@ import About from '../../components/about'
 import Partners from 'components/partners'
 import Certificates from 'components/certificates'
 import Footer from 'components/footer'
+import data from './toursData'
 
 export default class extends React.Component {
 
@@ -37,9 +38,22 @@ export default class extends React.Component {
             console.log(error);
          })
    }
+
    componentDidMount = () => {
-      this.getTours()
+      let lang = localStorage.getItem('lang');
+      if (lang === 'en') {
+         this.setState({ tours: data.en })
+      }
+
+      if (lang === 'ua') {
+         this.setState({ tours: data.ua })
+      }
+
+      if (lang === 'ro') {
+         this.setState({ tours: data.ro })
+      }
    }
+
    changeIsSelected = (arrayNum) => {
       let tours = [...this.state.tours]
       tours.splice(arrayNum, 1);
@@ -64,6 +78,17 @@ export default class extends React.Component {
       }
    }
 
+   deleteItemFromList = (id) => {
+      let toursList = this.state.tours;
+
+      const index = toursList.findIndex(obj => obj.id === id);
+      if (index !== -1) {
+         toursList.splice(index, 1);
+      }
+
+      this.setState({ tours: toursList })
+   }
+
    render() {
       let lang = localStorage.getItem('lang');
       let langObj = langCheaker(lang);
@@ -82,18 +107,19 @@ export default class extends React.Component {
                   <h2>{langObj.hotToursHeader}</h2>
                   <div className={s.items}>
 
-                     {this.state.load ? <Spiner /> : this.state.tours.map((tour, i) => {
-                        if (tour.isSelected) {
+                     { this.state.tours.map((tour, i) => {
+
                            return <TourItem key={tour.id}
                               id={tour.id}
                               isSelected={tour.isSelected}
-                              image_uid={tour.imageId.image_uid}
+                              image_uid={tour.image}
                               arrayNum={i}
                               changeIsSelected={this.changeIsSelected}
                               createNotification={this.createNotification}
-                              mainPage={true}
-                              tour={(lang === 'uk') ? (tour.ukrainian) : ((lang === 'en') ? (tour.english) : ((lang === 'ro') ? (tour.romanian) : (tour.ukrainian)))} />
-                        }
+                              mainPage={false}
+                              deleteItemFromList={this.deleteItemFromList}
+                              tour={tour} />
+                        
                      })}
                   </div>
                </section>) : ''}

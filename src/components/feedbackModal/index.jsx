@@ -28,18 +28,20 @@ class FeedbackModal extends React.Component {
    }
 
    sendFeedback = (e) => {
-      const data = { email: this.state.email, name: this.state.name, description: this.state.description };
-      e.preventDefault();
-      axios.post('/api/create-feedback', data)
-         .then((response) => {
-            this.props.getFeedback();
-            this.props.handleCloseModal();
-            console.log(response);
-         })
-         .catch((error) => {
-            console.log(error);
-            this.setState({ validationModal: 'error' })
-         })
+      // const data = { email: this.state.email, name: this.state.name, description: this.state.description };
+      // e.preventDefault();
+      // axios.post('/api/create-feedback', data)
+      //    .then((response) => {
+      //       this.props.getFeedback();
+      //       this.props.handleCloseModal();
+      //       console.log(response);
+      //    })
+      //    .catch((error) => {
+      //       console.log(error);
+      //       this.setState({ validationModal: 'error' })
+      //    })
+      this.props.updateFeedbackList({ name: this.state.name, description: this.state.description, id: Math.random() * (10000 - 2) + 2 })
+      this.props.handleCloseModal();
    }
 
    createErrorNotification = (lang) => {

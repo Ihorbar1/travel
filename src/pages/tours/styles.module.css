@@ -1,8 +1,13 @@
 .tour {
    position: relative;
+   /* display: flex; */
    min-height: 600px;
    margin: 0 auto;
    text-align: center;
+}
+
+.toursContainer {
+   display: flex;
 }
 
 .items {

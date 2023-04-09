@@ -30,16 +30,18 @@ class Login extends React.Component {
    }
 
    sendUser = () => {
-      axios.post('/api/login', this.state)
-         .then((response) => {
-            console.log(response);
-            localStorage.setItem('role', response.data.data.role)
-            this.props.history.push("/");
-         })
-         .catch((error) => {
-            console.log(error);
-            this.createNotification(false)
-         })
+      localStorage.setItem('role', 'admin');
+      this.props.history.push("/");
+      // axios.post('/api/login', this.state)
+      //    .then((response) => {
+      //       console.log(response);
+      //       localStorage.setItem('role', response.data.data.role)
+      //       this.props.history.push("/");
+      //    })
+      //    .catch((error) => {
+      //       console.log(error);
+      //       this.createNotification(false)
+      //    })
 
    }
    createNotification = (typeOfNotification) => {
