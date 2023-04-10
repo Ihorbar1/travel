@@ -8,6 +8,7 @@
 
 .toursContainer {
    display: flex;
+   justify-content: center;
 }
 
 .items {
