@@ -5,7 +5,7 @@ const ua = {
    menuServicesPage: 'Додаткові Послуги',
    menuFeedbackPage: 'відгуки',
    menuContactPage: 'Контакти',
-   footer: `© ${new Date().getFullYear()} ЧТЕІ-ТУР, Всі права захищені`,
+   footer: `© 2022 ЧТЕІ-ТУР, Всі права захищені`,
 
    //MAIN PAGE
    mainHeader: 'Туристична фірма "ЧТЕІ-ТУР"',
@@ -96,7 +96,7 @@ const en = {
    menuServicesPage: 'Additional Services',
    menuFeedbackPage: 'reviews',
    menuContactPage: 'Contacts',
-   footer: `© ${new Date().getFullYear()} ЧТЕІ-ТУР, All rights reserved`,
+   footer: `© 2022 ЧТЕІ-ТУР, All rights reserved`,
 
    //MAIN PAGE
    mainHeader: 'Travel company "CHTEI-TOUR"',
@@ -188,7 +188,7 @@ const ro = {
    menuServicesPage: 'Servicii aditionale',
    menuFeedbackPage: 'recenzii',
    menuContactPage: 'Contacte',
-   footer: `© ${new Date().getFullYear()} ЧТЕІ-ТУР, Toate drepturile rezervate`,
+   footer: `© 2022 ЧТЕІ-ТУР, Toate drepturile rezervate`,
 
    //MAIN PAGE
    mainHeader: 'Companie de turism "CHTEI-TOUR"',

@@ -1,7 +1,8 @@
 .mainElem {
    position: relative;
    height: 100vh;
-   background-image: url(../../assets/img/bg4.jpg);
+   /* background-image: url(../../assets/img/bg4.jpg); */
+   background-image: url(http://res.cloudinary.com/dgi3ta8gg/image/upload/v1607873439/tour_images/01a0c52f-f07a-4c3b-a958-f2d9d4e7bb77_aesap5.jpg);
    background-repeat: no-repeat;
    background-size: cover;
    background-position: center;
